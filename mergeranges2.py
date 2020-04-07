@@ -1,53 +1,61 @@
 # revisiting merging meetings on Interview Cake!
 
+# input: list of time ranges
+# output: list of condensed time ranges
+# times are NOT always in order
+# sol'n should work without upper bound :o 
+
 # thoughts
-# function called merge_ranges()
-# input: list of multiple ranges
-# output: list of condensed ranges
+# sort the time ranges with .sort()
+# make an empty list for condensed time ranges
+# variable to store current time range = ACCOUNT FOR EXCLUSION OF END! 
+# start and stop variables?
 
-# meetings might NOT be in order - > order them first 
-# range is EXCLUSIVE! 
+# loop through times
+# start and stop variables?
 
-# order the meetings
-# soo! make an empty list to return 
-# have a current meeting time frame? set it to the first val of ORDERED list
+# if.. the time range is within the current range 
+# and if end of range is past the range 
+# extend the end range to this end + 1 (account for exclusion)
+# no need to account for starts before range bc.. already sorted stuff
 
-# loop through the ORDERED list
-# if the current item == current meeting or the curr item end is within the range of curr meeting-> continue to next item
-# if start of curr item is within the range (AND the end of curr item is past the range?)
-# set the current time frame end range to curr item end range
-# else
-# append curr time range into list
-# set the curr item as curr time range 
+# if the start time is after range
+# append the current range tuple thingy into the results list 
 
-# ?? need to append the very last time range?? 
-
-# outside of loop
-# return the list
-
-# bleh woah! not working! 
+# outside of loop(?), append the last thingy mabob into the list
+# return the list of condensed ranges
 
 def merge_ranges(times):
 	"""Condense ranges."""
 
-	# ordered times
 	times.sort()
+	print(times)
 
 	merged = []
-	curr_meeting = times[0]
-	curr_start = curr_meeting[0]
-	curr_end = curr_meeting[1]
+	# set to very first meeting
+	curr_start = times[0][0]
+	curr_end = times[0][1]
+	print('curr_start', curr_start)
+	print('curr_end', curr_end)
 
 	for time in times:
 		start = time[0]
 		end = time[1]
+		print('start', start)
+		print('end', end)
 
-		if time == curr_meeting or end in range(curr_start, curr_end + 1):
+		if start == curr_start and end == curr_end:
 			continue
-		elif start in range(curr_start, curr_end + 1):
+		elif start in range(curr_start, curr_end + 1) and end > curr_end:
 			curr_end = end
+			print('curr_start', curr_start)
+			print('curr_end', curr_end)
 		else:
-			merged.append(curr_meeting)
-			curr_meeting = time
+			merged.append((curr_start, curr_end))
+			curr_start = start
+			curr_end = end
+
+	# account for very last time frame still hanging out
+	merged.append((curr_start, curr_end))
 
 	return merged
