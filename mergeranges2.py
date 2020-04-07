@@ -44,7 +44,7 @@ def merge_ranges(times):
 		# print('start', start)
 		# print('end', end)
 
-		if start == curr_start and end == curr_end:
+		if (start == curr_start and end == curr_end) or (start in range(curr_start, curr_end + 1) and end in range(curr_start, curr_end + 1)) :
 			continue
 		elif start in range(curr_start, curr_end + 1) and end > curr_end:
 			curr_end = end
