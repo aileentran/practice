@@ -1,31 +1,14 @@
-# convert dictionary to list and list back to dictionary
+# convert dictionary to ONE DIMENSIONAL list and ONE DIMENSIONAL list back to dictionary
 # input: dictionary
 # output: list
 
-# make empty list
-
-# loop through dictionary
-# append key and value into the list
-
-
-# return list
 
 
 
 
 # input: list
 # output: dictionary 
-# even nums are keys
-# odd nums are values!! 
-# oh oh! maybe look at two values at a time?????? two pointerrrsss??
 
-# make an empty dictionary
-
-# while loopin through the list EVEN NUMBERSS??
-# make the current item the key and the next item the value?!
-# BOOM!
-
-# return the dictionary
 
 
 """
@@ -39,8 +22,7 @@ fruits = {
 }
 
 list:
-fruits = ['citrus', ['limes', 'cuties'], 'berries', ['cherries', 'blueberries', 'strawberries'], 'three', 3]
-
+fruits = ['citrus', 'limes', 'cuties', 'berries', 'cherries', 'blueberries', 'strawberries', 'three', 3]
 
 
 """
