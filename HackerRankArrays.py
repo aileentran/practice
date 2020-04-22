@@ -33,10 +33,10 @@ def hourglassSum(arr):
 	greatestSum = None
 
 	r = 0
-	while r <= 3:
+	while r <= len(arr) - 3:
 
 		c = 0
-		while c <= 3:
+		while c <= len(arr) - 3:
 
 			print(f'[r {r}] [c {c}]')
 
@@ -51,4 +51,27 @@ def hourglassSum(arr):
 		r += 1
 
 	return greatestSum
+
+"""
+test case
+
+input:
+arr = [1, 2, 3, 4, 5]
+d = 4
+
+output: [5, 1, 2, 3, 4]
+
+"""
+
+def rotLeft(a, d):
+
+	i = 0
+
+	while i < d:
+		end = a.pop(0)
+		a.append(end)
+
+		i += 1
+
+	return a
 		
