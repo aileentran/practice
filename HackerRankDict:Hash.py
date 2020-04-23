@@ -60,3 +60,27 @@ def checkMagazine(magazine, note):
 
 	return "Yes"
 
+##############################################################
+"""
+input: 2 strings
+output: return "Yes" if contain substrings (even letters), return "No" otherwise
+
+find the longer word
+loop through that and make a dictionary with letter as key and.. val as int?
+
+loop through shorter word and see if it is in the dictionary.. 
+why have a dictionary..?
+
+
+"""
+
+# Complete the twoStrings function below.
+def twoStrings(s1, s2):
+	longer = max(s1, s2)
+	short = min(s1, s2)
+
+	for letter in short:
+		if letter in longer:
+			return "Yes"
+		
+	return "No"
