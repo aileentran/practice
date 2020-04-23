@@ -74,4 +74,53 @@ def rotLeft(a, d):
 		i += 1
 
 	return a
+
+"""
+thoughts:
+input: q = array of ints
+output: int = # of swaps OR "Too chaotic"
+
+create ordered list to compare q to 
+ordered = list(range(1, len(q) + 1)) * range exclusive! 
+set swaps to "Too chaotic"
+
+use while loop => two pointers: one at ordered list and one at q
+subtract q from ordered item
+if difference is not in range(-2, 3) -> return "too chaotic"
+else: if swaps == "Too chaotic", swaps = 1
+else: swaps += 1
+
+outside loop
+return swaps // 2 => bc.. prob overlapping counts?? 
+
+
+TEST CASE
+
+Input: line = [2, 1, 5, 3, 4]
+Output: 3
+
+Input: line = [2, 5, 1, 3, 4]
+Output: "Too chaotic"
+"""
+
+# Complete the minimumBribes function below.
+def minimumBribes(q):
+	# ordered = list(range(1, len(q) + 1))
+	swaps = "Too chaotic"
+
+	print('ordered', ordered)
+
+	i = 0
+
+	while i < len(q):
+		# order = ordered[i]
+		# bribed = q[i]
+		# places = order - bribed
+		# print(places)
+
+
+		i += 1
+
+	return swaps
+
 		
