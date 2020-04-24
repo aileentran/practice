@@ -123,4 +123,21 @@ def minimumBribes(q):
 
 	return swaps
 
+
+"""
+input: q -> array of ints (people's position in line)
+output: PRINT int (min swaps necessary) OR "Too chaotic" 
+
+swap = bribe - behind moves in front
+people can move up max 2 places 
+
+thoughts
+1. using a range of ordered stuff to compare current q to 
+2. something about.. the indexes.. basically being the order 
+
+peeps behind an move up max 2 idxs. problem is.. front person can be continually bribed by new people behind them..? /)_(\
+
+
+"""
+
 		
