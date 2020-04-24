@@ -75,54 +75,6 @@ def rotLeft(a, d):
 
 	return a
 
-"""
-thoughts:
-input: q = array of ints
-output: int = # of swaps OR "Too chaotic"
-
-create ordered list to compare q to 
-ordered = list(range(1, len(q) + 1)) * range exclusive! 
-set swaps to "Too chaotic"
-
-use while loop => two pointers: one at ordered list and one at q
-subtract q from ordered item
-if difference is not in range(-2, 3) -> return "too chaotic"
-else: if swaps == "Too chaotic", swaps = 1
-else: swaps += 1
-
-outside loop
-return swaps // 2 => bc.. prob overlapping counts?? 
-
-
-TEST CASE
-
-Input: line = [2, 1, 5, 3, 4]
-Output: 3
-
-Input: line = [2, 5, 1, 3, 4]
-Output: "Too chaotic"
-"""
-
-# Complete the minimumBribes function below.
-def minimumBribes(q):
-	# ordered = list(range(1, len(q) + 1))
-	swaps = "Too chaotic"
-
-	print('ordered', ordered)
-
-	i = 0
-
-	while i < len(q):
-		# order = ordered[i]
-		# bribed = q[i]
-		# places = order - bribed
-		# print(places)
-
-
-		i += 1
-
-	return swaps
-
 
 """
 input: q -> array of ints (people's position in line)
@@ -133,11 +85,42 @@ people can move up max 2 places
 
 thoughts
 1. using a range of ordered stuff to compare current q to 
-2. something about.. the indexes.. basically being the order 
+2. ordered = idx + 1 
+3. like bubble sorting -> look at left person and if person is greater, keep swappin
 
 peeps behind an move up max 2 idxs. problem is.. front person can be continually bribed by new people behind them..? /)_(\
 
+make swap counter
+make places moved counter = {num : #places moved}
 
+nested loop: outer = overall order, inner = move until it's in the right place 
+
+outer loop
+for each num
+counter[num] = 0??
+
+inner loop: while?? 
+until num == idx + 1
+if counter[num] > 2: print "Too Chaotic"
+num, num @ idx + 1 = num @ idx + 1, num
+swap += 1
+counter[num] += 1 
+
+idx += 1
+
+out of all loops
+print swaps?
+
+TEST CASE
+
+Input: line = [2, 1, 5, 3, 4]
+Output: 3
+
+Input: line = [2, 5, 1, 3, 4]
+Output: "Too chaotic"
 """
+
+#####################################################
+
 
 		
