@@ -55,3 +55,38 @@ def makeAnagram(a, b):
 			deletions += shorterCount[letter]
 
 	return deletions
+
+"""
+String manipulation version..?
+input: a, b -> two strings 
+output: int -> number of deletions
+
+empty deletions counter set to 0
+
+sort strings to be in order
+
+two pointers!! 
+while loopin' 
+oh crap. how to know what to delete..? 
+if same as letter before, delete the current letter.. bc repeats? 
+when delete -> deletions += 1
+the one that did nOT get deleted does NOT increment 
+
+outside loop
+return deletions
+
+
+"""
+# def makeAnagram(a, b):
+# 	a.sort()
+# 	b.sort()
+
+# 	short = min(a, b)
+
+# 	deletions = 0
+
+# 	i = 0
+
+# 	while i < len(short):
+# 		if a[i] != b[i]:
+# 			if 
