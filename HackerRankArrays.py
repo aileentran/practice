@@ -100,7 +100,7 @@ for each num
 counter[num] = 0??
 
 inner loop: while?? 
-until num == idx + 1
+until num == idx + 1 <-- proper spot if in order
 if counter[num] > 2: print "Too Chaotic"
 num, num @ idx + 1 = num @ idx + 1, num
 swap += 1
@@ -110,6 +110,16 @@ idx += 1
 
 out of all loops
 print swaps?
+
+
+
+CHANGE OF PLANS! gonna do the kinda bubble sort
+empty swap counter
+empty dictionary counter for num of places moved
+
+outer loop to keep going until list is ordered
+inner loop: move the actual item 
+
 
 TEST CASE
 
@@ -122,5 +132,68 @@ Output: "Too chaotic"
 
 #####################################################
 
+# Complete the minimumBribes function below.
+# def minimumBribes(q):
+# 	swaps = 0
+# 	places = {}
 
+# 	for num in q:
+# 		places.get(num, 0)
+# 		print(num)
+
+# 		# ohh! something wrong heerrrreee! with the idx vs num.. 
+# 		i = 0
+
+# 		while i < len(q):
+
+# 			if places[num] > 2:
+# 				print(places)
+# 				return "Too chaotic"
+# 			elif q[i] > i + 1:
+# 				places[q[i]] += 1
+
+# 				print('num', num)
+# 				print('next', q[i + 1])
+# 				q[i], q[i + 1] = q[i + 1], q[i]
+# 				swaps += 1
+# 				print(q)
+# 				print(places)
+# 				print(swaps)
+
+# 			i += 1
+
+# 		print(q)
+# 		print('\n\n\n\n\n')
+# 		# to move on to.. the next idx as appropriate..?
+
+
+# 	return swaps
+
+# Complete the minimumBribes function below.
+def minimumBribes(q):
+	swaps = 0
+	places = {}
+
+	for num in q:
+		places[num] = 0
+
+	while True:
+		for num in q:
+			if places[num] > 2: 
+				return "Too chaotic"
+
+		if q == list(range(1, len(q) + 1)):
+			return swaps
 		
+		i = 0
+
+		while i < len(q) - 1:
+			if q[i] > q[i + 1]:
+				places[q[i]] += 1
+				q[i], q[i + 1] = q[i + 1], q[i]
+				swaps += 1
+
+			i += 1
+
+
+
