@@ -29,54 +29,38 @@
 # hmm.. well. time to get started!
 
 # import math
+# test case
+# input: array of letters
+ # message = [ 'c', 'a', 'k', 'e', ' ','p', 'o', 'u', 'n', 'd', ' ','s', 't', 'e', 'a', 'l' ]
+ # output: string -> 'steal pound cake'
 
 def reverse_words(message):
 
-    # Decode the message by reversing the words
+    # reverse entire message
+    reverse_characters(message, 0, len(message) - 1)
 
+    # reverse individual words
     left_idx = 0
-    right_idx = -1
-    middle_idx = len(message) // 2
+    i = 0
 
-    while left_idx <= middle_idx:
-    	message[left_idx], message[right_idx] = message[right_idx], message[left_idx]
+    while i < len(message):
+        if message[i] == ' ':
+            reverse_characters(message, left_idx, i - 1)
+            left_idx = i + 1
+        elif i == len(message) - 1:
+            reverse_characters(message, left_idx, len(message) - 1)
 
-    	left_idx += 1
-    	right_idx -= 1
-
-    # now message is completely reversed. words are backwards too 
-    print(message)
-
-    left_letter = 0
-    right_letter = 0
-    middle_letter = 0
-    idx = 0
-
-    while idx <= len(message):
+        i += 1
 
 
-    	if message[idx] == ' ' or idx == len(message) - 1:
-    		right_letter = idx - 1
-    		middle_letter = idx // 2
+    return ''.join(message)
 
-    		print(message[left_letter])
-    		print(message[middle_letter])
-    		print(message[right_letter])
-    		
-    		# reverse the word's characters
-    		while left_letter <= middle_letter:
-    			message[left_letter], message[right_letter] = message[right_letter], message[left_letter]
+def reverse_characters(message, left_idx, right_idx):
 
-    			left_letter += 1
-    			right_letter -= 1
+    while left_idx < right_idx:
+        message[left_idx], message[right_idx] = message[right_idx], message[left_idx]
 
-    		# left letter is idx + 1 after the space 
-    		# print('next left letter', message[left_letter])
-    		print(message)
-
-
-    	idx += 1
-    	left_letter = idx
+        left_idx += 1
+        right_idx -= 1
 
     return message
-
