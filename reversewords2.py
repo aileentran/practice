@@ -15,6 +15,8 @@ swap values left, right = right left
 return the array 
 
 main function
+
+reverse ENTIRE string!
 left idx 
 
 then loop through array and re-reverse the words 
