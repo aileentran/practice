@@ -39,7 +39,24 @@ output: 'steal pound cake'
 def reverse_words(message):
 
     # Decode the message by reversing the words
-    pass
+
+    # reverse whole string 
+    rev_chars(message, 0, len(message) - 1)
+
+    # re-reverse the words
+    l_idx = 0
+
+    i = 0
+    while i < len(message):
+    	if message[i] == ' ':
+    		rev_chars(message, l_idx, i - 1)
+    		l_idx = i + 1
+    	elif i == len(message) - 1:
+    		rev_chars(message, l_idx, i)
+
+    	i += 1
+
+    return ''.join(message)
 
 # helper func
 def rev_chars(message, l_idx, r_idx):
@@ -52,5 +69,6 @@ def rev_chars(message, l_idx, r_idx):
 		r_idx -= 1
 
 	return message
+
 
 
