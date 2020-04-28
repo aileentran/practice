@@ -49,6 +49,7 @@ One of our lists runs out of elements before we're done merging.
 def merge_lists(my_list, alices_list):
 
 	# Combine the sorted lists into one large sorted list
+
 	longer = max(my_list, alices_list)
 	combined = []
 
