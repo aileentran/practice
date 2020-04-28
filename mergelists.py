@@ -49,19 +49,31 @@ One of our lists runs out of elements before we're done merging.
 def merge_lists(my_list, alices_list):
 
 	# Combine the sorted lists into one large sorted list
+	total_len = len(my_list) + len(alices_list)
+	combined = [None] * total_len
 
-	longer = max(my_list, alices_list)
-	combined = []
+	my_i = 0
+	alices_i = 0
+	combined_i = 0
 
-	i = 0
+	while combined_i < total_len:
+		mine_is_exhausted = my_i >= len(my_list)
+		alices_is_exhausted = alices_i >= len(alices_list)
+		
 
-	while i < len(longer):
-		smaller = min(my_list[i], alices_list[i])
-		larger = max(my_list[i], alices_list[i])
-		combined.append(smaller)
-		combined.append(larger)
+		if (not mine_is_exhausted and (my_list[my_i] < alices_list[alices_i] or alices_is_exhausted)):
+			combined[combined_i] = my_list[my_i]
+			my_i += 1
+		else:
+			combined[combined_i] = alices_list[alices_i]
+			alices_i += 1
 
-		i += 1
+		print(my_list[my_i])
+		print(alices_list[alices_i])
+		print(combined)
+
+		combined_i += 1
+		
 
 	return combined
 
