@@ -30,7 +30,7 @@ return false
 def can_two_movies_fill_flight(movie_lengths, flight_length):
 
     # Determine if two movie runtimes add up to the flight length
-    movie_lengths.sort()
+    # movie_lengths.sort()
     movies = {}
     for movie in movie_lengths:
     	if movie not in movies:
@@ -38,6 +38,11 @@ def can_two_movies_fill_flight(movie_lengths, flight_length):
     	else:
     		movies[movie] += 1
 
-    print(movies)
+    for movie in movie_lengths:
+    	movies[movie] -= 1
+    	second_movie = flight_length - movie
+
+    	if (second_movie in movies and movies[second_movie] > 0):
+    		return True
 
     return False
