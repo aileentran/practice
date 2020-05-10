@@ -4,8 +4,7 @@ get_max() returns largest item in the stack WITHOUT removing item
 stack only contains ints! 
 
 """
-class MaxStack(object):
-
+class Stack(object):
 	def __init__(self):
 		"""Initialize empty stack w/ dynamic array"""
 		self.items = []
@@ -32,22 +31,33 @@ class MaxStack(object):
 
 		return self.items[-1]
 
+class MaxStack(object):
+
+	def __init__(self):
+		self.stack = Stack()
+		self.max_stack = Stack()
+
+	def push(self, item):
+		self.stack.push(item)
+
+		if self.max_stack.peek() is None or self.max_stack.peek() < item:
+			self.max_stack.push(item)
+
+	def pop(self):
+		if len(self.stack) == 0:
+			raise ValueError('The stack is empty! There is nothing to remove')
+
+		popped = self.stack.pop()
+
+		if popped == self.max_stack.peek():
+			self.max_stack.pop()
+
 	def get_max(self):
 		"""Find maximum value in stack"""
-
-		largest = self.items[0]
-
-		for item in self.items:
-			if item > largest:
-				largest = item
-
-		return largest
+		return self.max_stack.peek()
 
 
 a = MaxStack()
 a.push(1)
 a.push(123)
-print(a.items)
-
-
-
+print(a.max_stack.items)
