@@ -63,8 +63,8 @@ def valid_sudoku(solution):
 	# check columns (vertical)
 	# entire columns are.. [row + 1][col]
 	i = 0
-
 	while i < ncol:
+
 		k = 0
 		while k < nrow:
 			num = solution[k][i]
@@ -79,6 +79,42 @@ def valid_sudoku(solution):
 		num_count = {}
 
 		i += 1
+
+	# check for 3x3 boxes.. 
+	# best way to check in bounds is.. lower right corners
+	# [row + 3][col + 3]
+
+		
+		# first line
+		# solution[row + 0][col + 0]
+		# solution[row + 0][col + 1]
+		# solution[row + 0][col + 2]
+		# # second line
+		# solution[row + 1][col + 0]
+		# solution[row + 1][col + 1]
+		# solution[row + 1][col + 2]
+		# # third line
+		# solution[row + 2][col + 0]
+		# solution[row + 2][col + 1]
+		# solution[row + 2][col + 2]
+
+	origins = [(0, 0), (0, 3),(0, 6),(3, 0),(3, 3),(3, 6),(6, 0),(6, 3),(6, 6)]
+	
+
+	for origin in origins: 
+		row, col = origin
+
+		for offset in range(0, 3):
+			
+			for col_offset in range(0, 3):
+
+				num = solution[row + offset][col + col_offset]
+				if num in num_count:
+					return False
+				else:
+					num_count[num] = 1
+
+		num_count = {}
 
 
 	return True
