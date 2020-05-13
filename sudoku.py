@@ -47,6 +47,8 @@ bad = [
 def valid_sudoku(solution):
 	# code goes here
 	num_count = {}
+	nrow = len(solution)
+	ncol = len(solution[0])
 
 	# check rows (horizontal)
 	for row in solution:
@@ -59,7 +61,24 @@ def valid_sudoku(solution):
 		num_count = {}
 
 	# check columns (vertical)
-	
+	# entire columns are.. [row + 1][col]
+	i = 0
+
+	while i < ncol:
+		k = 0
+		while k < nrow:
+			num = solution[k][i]
+
+			if num in num_count:
+				return False
+			else:
+				num_count[num] = 1
+
+			k += 1
+
+		num_count = {}
+
+		i += 1
 
 
 	return True
