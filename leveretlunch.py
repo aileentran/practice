@@ -135,6 +135,7 @@ def lunch_count(garden):
     total_eaten = 0
 
     while True:
+        # laying out directions
         west = (row, col - 1)
         north = (row - 1, col)
         east = (row, col + 1)
@@ -142,6 +143,7 @@ def lunch_count(garden):
 
         directions = [west, north, east, south]
 
+        # creating the dict w/ tuple of dir[key]: num carrots
         all_da_carrots = {}
 
         for direction in directions:
@@ -153,27 +155,34 @@ def lunch_count(garden):
 
         print(all_da_carrots)
 
+        # eat the carrots in the current grid
         total_eaten += garden[row][col]
         garden[row][col] = 0
 
+        # checking if there are carrots in the surrounding squares
+        # assume there are no carrots
         any_carrots = False
-        for pos in all_da_carrots:
-            if all_da_carrots[pos] > 0:
+
+        # if any of the grids had carrots, any_carrots is Truee!
+        for direction in all_da_carrots:
+            if all_da_carrots[direction] > 0:
                 any_carrots = True
                 break
 
+        # if there are no more carrots, break out of the loop and return the total carrots eaten
         if not any_carrots:
             break
 
+        # there are still carrots around
         most_carrots = 0
 
-        for pos in all_da_carrots:
-            if all_da_carrots[pos] > most_carrots:
-                most_carrots = all_da_carrots[pos]
-                row, col = pos
+        for direction in all_da_carrots:
+            if all_da_carrots[direction] > most_carrots:
+                most_carrots = all_da_carrots[direction]
+                # next potential position
+                row, col = direction
         
-        if (row > nrows) or (row < 0) or (col > ncols) or (col < 0) :
-            break
+        # now we got the row and col of the grid w/ most carrots
 
         print('next', (row, col))
 
