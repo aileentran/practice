@@ -109,7 +109,7 @@ def center(garden):
             starting_pos = start
 
 
-    return starting_pos, most_carrots
+    return starting_pos
 
 
 def lunch_count(garden):
@@ -127,5 +127,82 @@ def lunch_count(garden):
     nrows = len(garden)
     ncols = len(garden[0])
 
+    start = center(garden)
+    row, col = start
+
+    print('start', start)
+    
+    total_eaten = 0
+
+    while True:
+        west = (row, col - 1)
+        north = (row - 1, col)
+        east = (row, col + 1)
+        south = (row + 1, col)
+
+        directions = [west, north, east, south]
+
+        all_da_carrots = {}
+
+        for direction in directions:
+            if (direction[0] > nrows - 1) or (direction[0] < 0) or (direction[1] > ncols - 1) or (direction[1] < 0):
+                # out of bounds and bunny doesn't care about no carrots
+                all_da_carrots[direction] = 0
+            else:
+                all_da_carrots[direction] = garden[direction[0]][direction[1]]
+
+        print(all_da_carrots)
+
+        total_eaten += garden[row][col]
+        garden[row][col] = 0
+
+        any_carrots = False
+        for pos in all_da_carrots:
+            if all_da_carrots[pos] > 0:
+                any_carrots = True
+                break
+
+        if not any_carrots:
+            break
+
+        most_carrots = 0
+
+        for pos in all_da_carrots:
+            if all_da_carrots[pos] > most_carrots:
+                most_carrots = all_da_carrots[pos]
+                row, col = pos
+        
+        if (row > nrows) or (row < 0) or (col > ncols) or (col < 0) :
+            break
+
+        print('next', (row, col))
 
 
+    return total_eaten
+
+
+garden1 = [
+        [1, 1, 1],
+        [0, 1, 1],
+        [9, 1, 9]
+        ]
+
+garden2 = [
+    [9, 9, 9, 9],
+    [9, 3, 1, 0],
+    [9, 1, 4, 2],
+    [9, 9, 1, 0]
+    ]
+
+
+garden3 = [
+    [2, 3, 1, 4, 2, 2, 3],
+    [2, 3, 0, 4, 0, 3, 0],
+    [1, 7, 0, 2, 1, 2, 3],
+    [9, 3, 0, 4, 2, 0, 3]
+    ]
+
+
+print(lunch_count(garden1))
+print(lunch_count(garden2))
+print(lunch_count(garden3))
