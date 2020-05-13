@@ -15,6 +15,14 @@ east = [row][col + 1]
 south = [row + 1][col]
 
 helper func -> find the center and have the leveret start there
+-dead center
+-if multiple squares: highest number of carrots
+empty list of potential starts
+odd num: num // 2 = idx
+even num: num // 2 = lower row or col; lower - 1 = upper row or col
+
+list of carrot vals:
+-append val @ [row][col]
 
 main func 
 feed garden into center func to get starting point 
@@ -32,7 +40,77 @@ while west, north, east, south (are NOT 0):
 
 return carrots counter
 
+TEST CASES:
+garden = [
+        [1, 1, 1],
+        [0, 1, 1],
+        [9, 1, 9]
+        ]
+starting position = (1, 1)
+
+garden = [
+    [9, 9, 9, 9],
+    [9, 3, 1, 0],
+    [9, 1, 4, 2],
+    [9, 9, 1, 0]
+    ]
+starting position = (2, 2)
+
+
+garden = [
+    [2, 3, 1, 4, 2, 2, 3],
+    [2, 3, 0, 4, 0, 3, 0],
+    [1, 7, 0, 2, 1, 2, 3],
+    [9, 3, 0, 4, 2, 0, 3]
+    ]
+starting position = (1, 3)
 """
+def center(garden):
+    """Given a garden, return the leveret's starting point."""
+    nrows = len(garden)
+    ncols = len(garden[0])
+
+    midrow = []
+    midcol = []
+
+    if nrows % 2 != 0:
+        ridx = nrows // 2
+        midrow.append(ridx)
+    else:
+        lower = nrows // 2
+        upper = lower - 1
+        midrow.append(upper)
+        midrow.append(lower)
+
+    if ncols % 2 != 0:
+        cidx = ncols // 2
+        midcol.append(cidx)
+    else:
+        lower = ncols // 2 
+        upper = lower - 1
+        midcol.append(upper)
+        midcol.append(lower)
+
+    starts = []
+
+    for row in midrow:
+        for col in midcol:
+            starts.append((row, col))
+
+    most_carrots = 0
+    starting_pos = None
+
+    for start in starts:
+        row = start[0]
+        col = start[1]
+
+        if garden[row][col] > most_carrots:
+            most_carrots = garden[row][col]
+            starting_pos = start
+
+
+    return starting_pos, most_carrots
+
 
 def lunch_count(garden):
     """Given a garden of nrows of ncols, return carrots eaten."""
@@ -51,4 +129,3 @@ def lunch_count(garden):
 
 
 
-    
