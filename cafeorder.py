@@ -20,9 +20,8 @@ def is_first_come_first_served(take_out_orders, dine_in_orders, served_orders):
 
     # Check if we're serving orders first-come, first-served
 
-    
-
     for served in served_orders:
+        # checking if anything is queued up for both takeout and dinein
         if len(take_out_orders) > 0:
             first_takeout = take_out_orders[0]
         else:
@@ -33,6 +32,7 @@ def is_first_come_first_served(take_out_orders, dine_in_orders, served_orders):
         else:
             first_dinein = None
 
+        # check order of served vs queues 
         if (served == first_takeout):
             take_out_orders.remove(first_takeout)
         elif (served == first_dinein):
