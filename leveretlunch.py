@@ -135,6 +135,7 @@ def lunch_count(garden):
     total_eaten = 0
 
     while True:
+
         # laying out directions
         west = (row, col - 1)
         north = (row - 1, col)
@@ -154,11 +155,10 @@ def lunch_count(garden):
                 all_da_carrots[direction] = garden[direction[0]][direction[1]]
 
         print(all_da_carrots)
-
         # eat the carrots in the current grid
         total_eaten += garden[row][col]
         garden[row][col] = 0
-
+        
         # checking if there are carrots in the surrounding squares
         # assume there are no carrots
         any_carrots = False
@@ -212,6 +212,6 @@ garden3 = [
     ]
 
 
-print(lunch_count(garden1))
-print(lunch_count(garden2))
-print(lunch_count(garden3))
+print(lunch_count(garden1)) # 3
+print(lunch_count(garden2)) # 6
+print(lunch_count(garden3)) # 15
