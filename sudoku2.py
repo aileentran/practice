@@ -27,6 +27,7 @@ bad = [
 
 def sudoku(grid):
 
+	# checking rows
 	for row in grid:
 		num_count = {}
 		for num in row:
@@ -34,6 +35,30 @@ def sudoku(grid):
 				return False
 			else:
 				num_count[num] = 1
+
+	# checking columns
+	nrow = len(grid)
+	ncol = len(grid[0])
+
+	col = 0
+
+	while col < ncol:
+		num_count = {}
+		row = 0
+		
+		while row < nrow:
+			num = grid[row][col]
+			if num in num_count:
+				return False
+			else:
+				num_count[num] = 1
+
+			row += 1
+
+		col += 1 
+
+	# check 3x3
+	
 
 	return True
 
