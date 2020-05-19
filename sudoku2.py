@@ -26,4 +26,17 @@ bad = [
 ]
 
 def sudoku(grid):
-	
+
+	for row in grid:
+		num_count = {}
+		for num in row:
+			if num in num_count:
+				return False
+			else:
+				num_count[num] = 1
+
+	return True
+
+
+print(sudoku(good)) #True
+print(sudoku(bad))	#False
