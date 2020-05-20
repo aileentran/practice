@@ -68,6 +68,7 @@ def sudoku(grid):
 	(6, 0), (6, 3), (6, 6)
 
 	"""
+
 	origins = []
 
 	row = 0
@@ -81,7 +82,23 @@ def sudoku(grid):
 
 		row += 3
 
-	
+	for origin in origins:
+		row, col = origin
+		num_count = {}
+		
+		i = row
+		while i < (row + 3):
+
+			k = col
+			while k < (col + 3):
+				num = grid[i][k]
+				if num in num_count:
+					return False
+				else:
+					num_count[num] = 1
+				k += 1
+
+			i += 1
 
 
 	return True
