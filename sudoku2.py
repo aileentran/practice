@@ -58,7 +58,31 @@ def sudoku(grid):
 		col += 1 
 
 	# check 3x3
+	"""
+	origin starting point thingies!
+	origin1 = (0,0)
+	origin2 = (0, 3)
+	origin3 = (0, 6)
+	(0, 0), (0, 3), (0, 6)
+	(3, 0), (3, 3), (3, 6)
+	(6, 0), (6, 3), (6, 6)
+
+	"""
+	origins = []
+
+	row = 0
+
+	while row <= 6:
+		col = 0
+
+		while col <= 6:
+			origins.append((row, col))
+			col += 3
+
+		row += 3
+
 	
+
 
 	return True
 
