@@ -7,6 +7,10 @@ start in center: DEAD center OR if multiple centers, grid with the most carrots
 helper function - finding center
 input: garden grid
 output: (row, col) of start
+
+main function
+input: garden grid
+output: int - total carrots 
 """
 
 garden1 = [
@@ -31,23 +35,23 @@ garden3 = [
     ]
 
 def center(garden):
-    nrow = len(garden)
-    ncol = len(garden[0])
+    nrows = len(garden)
+    ncols = len(garden[0])
 
     row_idx = []
     col_idx = []
 
-    if nrow % 2 != 0:
-        row_idx.append(nrow // 2)
+    if nrows % 2 != 0:
+        row_idx.append(nrows // 2)
     else:
-        row_idx.append((nrow // 2) - 1)
-        row_idx.append(nrow // 2)
+        row_idx.append((nrows // 2) - 1)
+        row_idx.append(nrows // 2)
 
-    if ncol % 2 != 0:
-        col_idx.append(ncol // 2)
+    if ncols % 2 != 0:
+        col_idx.append(ncols // 2)
     else:
-        col_idx.append((ncol // 2) - 1)
-        col_idx.append(ncol // 2)
+        col_idx.append((ncols // 2) - 1)
+        col_idx.append(ncols // 2)
         
 
     starts = []
@@ -80,12 +84,73 @@ def center(garden):
 
     return start
 
-# def lunch_count(garden):
+def lunch_count(garden):
+
+    nrows = len(garden)
+    ncols = len(garden[0])
+
+    # find the center
+    start = center(garden)
+    # current position
+    row, col = start
+
+    total = 0
+
+    while True:
+        # eat the carrots at current position
+        total += garden[row][col]
+        # empty the carrots in current position
+        garden[row][col] = 0
+
+        # look at the diff directions WNES
+        west = (row, col - 1)
+        north = (row - 1, col)
+        east = (row, col + 1)
+        south = (row + 1, col)
+
+        all_directions = [west, north, east, south]
 
 
-print(center(garden1)) # start: (1, 1)
-print(center(garden2)) # start: (2, 2)
-print(center(garden3)) # start: (1, 3)
-# print(lunch_count(garden1)) # eaten: 3
-# print(lunch_count(garden2)) # eaten: 6
-# print(lunch_count(garden3)) # eaten: 15
+        # dictionary of direction tuple(key) and # of carrots
+        directions = {}
+
+        # making sure within garden grid and fill in dictionary
+        for direction in all_directions:
+            dir_row, dir_col = direction
+            if (dir_row < 0) or (dir_row >= nrows) or (dir_col < 0) or (dir_col >= ncols):
+                directions[direction] = 0 #bunny will ignore 0 carrots
+            else:
+                directions[direction] = garden[dir_row][dir_col]
+        
+        # checking to there are carrots to eat in any direction!
+        any_carrots = False
+
+        for direction in directions:
+            if directions[direction] > 0:
+                any_carrots = True
+
+        # no more carrots to eat
+        if any_carrots == False:
+            return total
+
+        # checking which direction has the most carrots
+        most_carrots = 0
+
+        for direction in directions:
+            if directions[direction] > most_carrots:
+                most_carrots = directions[direction]
+                row, col = direction
+
+
+
+
+
+
+    
+
+# print(center(garden1)) # start: (1, 1)
+# print(center(garden2)) # start: (2, 2)
+# print(center(garden3)) # start: (1, 3)
+print(lunch_count(garden1)) # eaten: 3
+print(lunch_count(garden2)) # eaten: 6
+print(lunch_count(garden3)) # eaten: 15
