@@ -102,7 +102,7 @@ def lunch_count(garden):
         # empty the carrots in current position
         garden[row][col] = 0
 
-        # look at the diff directions WNES
+        # establish directions
         west = (row, col - 1)
         north = (row - 1, col)
         east = (row, col + 1)
@@ -111,7 +111,7 @@ def lunch_count(garden):
         all_directions = [west, north, east, south]
 
 
-        # dictionary of direction tuple(key) and # of carrots
+        # dictionary of directions: tuple(key) and # of carrots (val)
         directions = {}
 
         # making sure within garden grid and fill in dictionary
@@ -123,6 +123,7 @@ def lunch_count(garden):
                 directions[direction] = garden[dir_row][dir_col]
         
         # checking to there are carrots to eat in any direction!
+        # way to break out of loop
         any_carrots = False
 
         for direction in directions:
@@ -134,18 +135,13 @@ def lunch_count(garden):
             return total
 
         # checking which direction has the most carrots
+        # move into grid with the most carrots!
         most_carrots = 0
 
         for direction in directions:
             if directions[direction] > most_carrots:
                 most_carrots = directions[direction]
                 row, col = direction
-
-
-
-
-
-
     
 
 # print(center(garden1)) # start: (1, 1)
