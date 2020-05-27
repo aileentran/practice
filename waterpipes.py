@@ -143,15 +143,7 @@ def waterpipes(grid):
             if pipe_or_wall[direction] == 0 and direction not in visited:
                 start.append(direction)
                 row, col = direction
-                break
-
-
-
-   
-
-
-
-        
+                break   
 
     return True
 
