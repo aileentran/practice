@@ -44,7 +44,6 @@ def highest_product_of_3(list_of_ints):
         raise ValueError('Whoopsidoodle! Need at least 3 ints!')
 
     list_of_ints.sort()
-    print(list_of_ints)
 
     lowest_prod = list_of_ints[0] * list_of_ints[1]
     highest_prod = list_of_ints[-1] * list_of_ints[-2]
