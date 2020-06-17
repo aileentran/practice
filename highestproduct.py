@@ -10,7 +10,8 @@ def highest_product_of_3(list_of_ints):
         raise ValueError('Whoopsidoodle! Need at least 3 ints!')
 
 
-    ints = []
+    # ints = []
+    product = 1
 
     i = 1
 
@@ -19,14 +20,15 @@ def highest_product_of_3(list_of_ints):
         largest = max(list_of_ints)
         idx = list_of_ints.index(largest)
         largest = list_of_ints.pop(idx)
-        ints.append(largest)
+        product *= largest
+        # ints.append(largest)
 
         i += 1
 
-    product = 1
+    # product = 1
 
-    for num in ints:
-        product *= num
+    # for num in ints:
+    #     product *= num
 
     return product
 
