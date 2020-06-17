@@ -46,7 +46,16 @@ def highest_product_of_3(list_of_ints):
     list_of_ints.sort()
     print(list_of_ints)
 
-   
+    lowest_prod = list_of_ints[0] * list_of_ints[1]
+    highest_prod = list_of_ints[-1] * list_of_ints[-2]
+
+    if lowest_prod > highest_prod and list_of_ints[-1] > 0:
+        product = lowest_prod * list_of_ints[-1]
+    else:
+        product = highest_prod * list_of_ints[-3]
+
+    return product
+
 
 print(highest_product_of_3([1, 2, 3, 4])) #24
 print(highest_product_of_3([6, 1, 3, 5, 7, 8, 2])) #336
