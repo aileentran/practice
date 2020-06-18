@@ -1,6 +1,43 @@
 # input: list of ints
 # output: list of ints - each num is a product of all other nums
 
+# O(n^2) solution!
+# def get_products_of_all_ints_except_at_index(int_list):
+
+#     # Make a list with the products
+
+#     if len(int_list) < 2:
+#         raise ValueError('Need at least 2 numbers in list!')
+
+#     result = []
+
+#     i = 0
+
+#     while i < len(int_list):
+#         curr = int_list[i]
+#         # print('curr', curr)
+
+#         product = 1
+
+#         k = 0
+
+#         while k < len(int_list):
+#             num = int_list[k]
+#             # print('num', num)
+            
+#             if k != i:
+#                 product *= num
+#                 # print('product', product)
+#             k += 1
+
+#         result.append(product)
+
+#         i += 1
+
+#     return result
+
+
+# O(n) time and space solution!
 def get_products_of_all_ints_except_at_index(int_list):
 
     # Make a list with the products
@@ -8,32 +45,21 @@ def get_products_of_all_ints_except_at_index(int_list):
     if len(int_list) < 2:
         raise ValueError('Need at least 2 numbers in list!')
 
-    result = []
+    before = []
+    
+    b_product = 1
 
-    i = 0
+    for num in int_list:
+        print(num)
 
-    while i < len(int_list):
-        curr = int_list[i]
-        # print('curr', curr)
+        before.append(b_product)
+        b_product *= num
 
-        product = 1
+    before.append(b_product)
 
-        k = 0
+    print(before)
 
-        while k < len(int_list):
-            num = int_list[k]
-            # print('num', num)
-            
-            if k != i:
-                product *= num
-                # print('product', product)
-            k += 1
-
-        result.append(product)
-
-        i += 1
-
-    return result
+    # to get product AFTER the index, reverse before
 
 
 print(get_products_of_all_ints_except_at_index([1, 2, 3])) 
