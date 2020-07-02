@@ -23,17 +23,17 @@
 
 # Complete the birthdayCakeCandles function below.
 def birthdayCakeCandles(ar):
-	blown = 0
-	tallest = 0
+    blown = 0
+    tallest = 0
 
-	for candle in ar:
-		if candle > tallest:
-			blown = 0
-			tallest = candle
-			blown += 1
-		elif candle == tallest:
-			blown += 1
+    for candle in ar:
+        if candle > tallest:
+            blown = 0
+            tallest = candle
+            blown += 1
+        elif candle == tallest:
+            blown += 1
 
-	return blown
+    return blown
 
 print(birthdayCakeCandles([3, 2, 1, 3])) #2 bc blow out both 3s!
