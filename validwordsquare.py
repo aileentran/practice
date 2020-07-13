@@ -21,41 +21,55 @@
 def validWordSquare(words):
     """Check if valid word square where row[i] == col[i]."""
     cols = []
-    w = ''
 
-    y = 0
+    i = 0
 
-    while y < len(words[0]):
-        x = 0
+    while i < len(words):
+        s = ''
+        k = 0
 
-        while x < len(words):
-            print(words[x][y])
-            x += 1
-        
+        while k < len(words[i]):
+            col_char = words[k][i]
+            s += col_char
+            k += 1
 
-        y += 1
+        cols.append(s)
+
+        i += 1
+    l = 0 
+
+    while l < len(words):
+        row = words[l]
+        col = cols[l]
+
+        if row != col:
+            return False 
+
+        l += 1
+
+    return True
 
 # runtime ??
 # runspace ??
 
-# validWordSquare([
-#   "abcd",
-#   "bnrt",
-#   "crmy",
-#   "dtye"
-# ]) #true
+print(validWordSquare([
+   "abcd",
+   "bnrt",
+   "crmy",
+   "dtye"
+ ])) #true
 
-# validWordSquare([
-#   "abcd",
-#   "bnrt",
-#   "crm",
-#   "dt"
-# ]) #true
+print(validWordSquare([
+   "abcd",
+   "bnrt",
+   "crm",
+   "dt"
+ ])) #true
 
-validWordSquare([
-  "ball",
-  "area",
-  "read",
-  "lady"
-]) #false bc row[3] != col[3] 
+print(validWordSquare([
+   "ball",
+   "area",
+   "read",
+   "lady"
+ ])) #false bc row1 != col1 row3 != col3 
 
