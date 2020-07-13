@@ -1,7 +1,10 @@
 # input: list of words/strings
 # output: boolean - true if row[i] == col[i]; false otherwise
 
-# Q's: would ever get anything besides strings? chars only?
+# Clarifying Q's: 
+# would ever get anything besides strings? 
+# chars only? 
+# same num of rows and cols?
 
 # thoughts
 # row = words[i]
@@ -36,6 +39,7 @@ def validWordSquare(words):
         cols.append(s)
 
         i += 1
+
     l = 0 
 
     while l < len(words):
@@ -49,8 +53,8 @@ def validWordSquare(words):
 
     return True
 
-# runtime ??
-# runspace ??
+# runtime: O(i * k) + O(l) --> O(n^2) + O(n) --> O(2n^2) --> O(n^2)
+# runspace: n
 
 print(validWordSquare([
    "abcd",
