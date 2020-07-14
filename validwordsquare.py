@@ -77,3 +77,5 @@ print(validWordSquare([
    "lady"
  ])) #false bc row1 != col1 row3 != col3 
 
+print(validWordSquare(["ball","asee","let","lep"]))
+
