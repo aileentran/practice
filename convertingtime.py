@@ -25,7 +25,8 @@ def timeConversion(s):
 
         return f'{convert}{s[2:-2]}'
 
-    	
+# runtime: bc length of string is constant = O(1); slicing would normally be n but.. know length of string 
+# runspace: w/out loops or variable input --> O(1)
 
 
 print(timeConversion('07:05:45PM')) #19:05:45

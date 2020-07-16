@@ -46,15 +46,18 @@ def validWordSquare(words):
         row = words[l]
         col = cols[l]
 
-        if row != col:
+        if row != col: #secret loop under the hood in Python!
             return False 
 
         l += 1
 
     return True
 
-# runtime: O(i * k) + O(l) --> O(n^2) + O(n) --> O(2n^2) --> O(n^2)
-# runspace: n
+# runtime: O(i * k) + O(l * n) --> O(n^2) + O(n^2) --> O(2n^2) --> O(n^2)
+# runspace: n = length of words; c = num of chars --> c = n --> n * n --> n^2
+# cols becomes length n 
+
+# c = 'aaa' + 'bbb' 
 
 print(validWordSquare([
    "abcd",
@@ -77,5 +80,9 @@ print(validWordSquare([
    "lady"
  ])) #false bc row1 != col1 row3 != col3 
 
-print(validWordSquare(["ball","asee","let","lep"]))
+print(validWordSquare([
+    "ball",
+    "asee",
+    "let",
+    "lep"])) #false
 
