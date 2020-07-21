@@ -32,9 +32,16 @@ def validWordSquare(words):
         k = 0
 
         while k < len(words[i]):
-            col_char = words[k][i]
-            s += col_char
-            k += 1
+            try:
+                col_char = words[k][i]
+                s += col_char
+                k += 1
+
+            # if length of col != length of row => NOT a valid square 
+            except IndexError as error:
+                return False
+            
+            
 
         cols.append(s)
 
