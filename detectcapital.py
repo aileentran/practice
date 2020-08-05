@@ -75,41 +75,41 @@ Otherwise, we define that this word doesn't use capitals in a right way.
 # loop through list starting at second letter
 # if encounter true, return false
 
-def determine_capital(string):
-    all_caps = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
-    caps_list = []
+# def determine_capital(string):
+#     all_caps = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+#     caps_list = []
 
-    for letter in string:
-        if letter in all_caps:
-            caps_list.append(True)
-        else:
-            caps_list.append(False)
+#     for letter in string:
+#         if letter in all_caps:
+#             caps_list.append(True)
+#         else:
+#             caps_list.append(False)
 
-    first_cap = caps_list[0]
-    sec_cap = caps_list[1]
+#     first_cap = caps_list[0]
+#     sec_cap = caps_list[1]
 
-    # all lowercase string
-    if first_cap == False:
-        for cap in caps_list:
-            if cap == True:
-                return False
+#     # all lowercase string
+#     if first_cap == False:
+#         for cap in caps_list:
+#             if cap == True:
+#                 return False
 
-    # capitalized word
-    if first_cap == True and sec_cap == False:
-        i = 1
-        while i < len(caps_list):
-            capitalized = caps_list[i]
-            if capitalized == True:
-                return False
-            i += 1
+#     # capitalized word
+#     if first_cap == True and sec_cap == False:
+#         i = 1
+#         while i < len(caps_list):
+#             capitalized = caps_list[i]
+#             if capitalized == True:
+#                 return False
+#             i += 1
 
-    # all caps
-    if first_cap == True and sec_cap == True:
-        for cap in caps_list:
-            if cap == False:
-                return False
+#     # all caps
+#     if first_cap == True and sec_cap == True:
+#         for cap in caps_list:
+#             if cap == False:
+#                 return False
 
-    return True
+#     return True
 
 # space complexity: O(n)
 # all_caps = O(26) -> O(1)
@@ -120,6 +120,53 @@ def determine_capital(string):
 # looping through string O(n) + if statement checking for caps O(c) -> O(n * c) -> O(n^2)
 # 3 un-nested loops = O(n)
 
+#####################################
+# omg. .isupper() checks for upper cases >>"
+# passing conditions: 
+# ALL CAPS
+# Capitalized 
+# lower case
+
+# thoughts
+# Capitalized and lowercase conditions -> word 2 and beyond is lower case
+
+# checking for all caps
+# if first letter is capitalized 
+# loop through second letter to the end
+# if a letter is NOT capitalized = return False
+
+# else
+# loop through second letter to the end
+# if there IS a capitalized letter, return False
+
+# outside of loops
+# return true
+
+def determine_capital(string):
+    if len(string) == 1:
+        return True
+
+    # check for all caps
+    if string[0].isupper() and string[1].isupper():
+        i = 1
+
+        while i < len(string):
+            letter = string[i]
+            if letter.isupper() == False:
+                return False
+
+            i += 1 
+    else:
+        i = 1
+        
+        while i < len(string):
+            letter = string[i]
+            if letter.isupper() == True:
+                return False
+
+            i += 1  
+
+    return True
 
 print(determine_capital("USA")) #true
 print(determine_capital("FLaG")) #false
