@@ -41,7 +41,7 @@ Otherwise, we define that this word doesn't use capitals in a right way.
 
 # space complexity: O(1)
 # capitals = O(26) -> O(1)
-# lowercase_counter = O(len(string)) -> O(1)
+# lowercase_counter = integer -> O(1)
 
 # run time: O(n^2)
 # for loop -> O(n)
@@ -110,6 +110,15 @@ def determine_capital(string):
                 return False
 
     return True
+
+# space complexity: O(n)
+# all_caps = O(26) -> O(1)
+# caps_list = len(n) -> O(n)
+# first_cap and second_cap = one boolean thing -> O(1)
+
+# run time: O(n^2)
+# looping through string O(n) + if statement checking for caps O(c) -> O(n * c) -> O(n^2)
+# 3 un-nested loops = O(n)
 
 
 print(determine_capital("USA")) #true
