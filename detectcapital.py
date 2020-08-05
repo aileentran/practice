@@ -168,6 +168,9 @@ def determine_capital(string):
 
     return True
 
+# space complexity: O(1) -> constant space to store variables: i's, letter
+# run space: 2 unnested loops -> O(n)
+
 print(determine_capital("USA")) #true
 print(determine_capital("FLaG")) #false
 print(determine_capital("Google")) #true
