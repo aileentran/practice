@@ -10,7 +10,7 @@ Could you do it without extra space and in O(n) runtime?
 """
 
 """
-Solution 1:
+Solution 1: does NOT return anything.. need to return a list!
 
 Approach:The elements in the array is from 0 to n-1 and all of them are positive. So to find out the duplicate elements, a HashMap is required, but the question is to solve the problem in constant space. There is a catch, the array is of length n and the elements are from 0 to n-1 (n elements). The array can be used as a HashMap.
 
