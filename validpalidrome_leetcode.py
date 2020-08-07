@@ -17,7 +17,17 @@ Note: For the purpose of this problem, we define empty string as valid palindrom
 
 def is_palindrome(string):
     string.lower()
-    print(string)
+
+    f = 0
+    b = -1
+
+    while f < len(string):
+        front = string[f]
+        back = string[b]
+        print('front', front)
+        print('back', back)
+        b -= 1
+        f += 1
 
 # print(is_palindrome("A man, a plan, a canal: Panama")) #true
 # print(is_palindrome("race a car")) #false
