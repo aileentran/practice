@@ -24,8 +24,15 @@ def is_palindrome(string):
     while f < len(string):
         front = string[f]
         back = string[b]
+
         print('front', front)
         print('back', back)
+        if front.isalpha() and back.isalpha() and front != back:
+            return False
+        elif front.isalpha() == False:
+            f += 1
+
+
         b -= 1
         f += 1
 
