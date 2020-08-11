@@ -54,25 +54,37 @@ def excelnum(letters):
     'Y': 25,
     'Z': 26
     }
-    col = 0
-
+    # each letter has 26 options => kind of like decimal/hexidecimal etc.
+    
+    col = 26 ** (len(letters) - 1)
+    print(col)
     # setting up col value for multiple letters
     if len(letters) > 1:
+
         i = 0
 
         while i < len(letters) - 1:
 
-            col += 26 * col_value[letters[0]]
+            col *= col_value[letters[i]]
 
             i += 1
 
     # adding the very last letter to col
+    print('col', col)
+
+    # for letter in letters:
+    #     print('letter', letter)
+    #     print(col_value[letter])
+    #     col *= col_value[letter]
+
+
+
     col += col_value[letters[-1]]
 
     return col
 
-print(excelnum('A')) #1
-print(excelnum('AB')) #28
-print(excelnum('ZY')) #701
-print(excelnum('ZZ')) #702
-print(excelnum('AAA')) #703?
+# print(excelnum('A')) #1
+# print(excelnum('AB')) #28
+# print(excelnum('ZY')) #701
+# print(excelnum('ZZ')) #702
+print(excelnum('AAA')) #703
