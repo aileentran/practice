@@ -61,7 +61,7 @@ def excelnum(letters):
     # setting up col value for multiple letters
     if len(letters) > 1:
         col = 26 ** (len(letters) - 1)
-        
+
         i = 0
 
         while i < len(letters) - 1:
@@ -83,6 +83,13 @@ def excelnum(letters):
     col += col_value[letters[-1]]
 
     return col
+# space complexity: O(1)
+# letters dictionary -> O(26) but constant = O(1)
+# col is an int -> O(1)
+
+# run time: O(n)
+# length of input string = n
+# one loop -> O(n)
 
 print(excelnum('A')) #1
 print(excelnum('AB')) #28
