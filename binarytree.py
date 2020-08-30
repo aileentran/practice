@@ -1,25 +1,39 @@
-class BinaryTree(object):
+# Binary search tree: add to left if greater than node, add to right if less than node
+# functions to do: insert(node), delete(node), find_highest, find_lowest, print_in_order(),
+
+class Node(object):
 	def __init__(self, value):
 		self.value = value
 		self.left = None
 		self.right = None
 
-	def print_tree(self):
-		return self.value
+class BinaryTree(object):
+	def __init__(self, value):
+		self.root = Node(value)
 
-	def insert_left(self, value):
-		self.left = BinaryTree(value)
-		return self.left
+	def print_root(self):
+		return self.root.value
 
-	def insert_right(self, value):
-		self.right = BinaryTree(value)
-		return self.right
+	def insert(self, value):
 
-tiny_tree = BinaryTree('seedling')
-print(tiny_tree.value)
+		current_node = self.root
 
-tiny_tree.insert_left('left leaf')
-print(tiny_tree.left.value)
+		while True:
+			if value > current_node.value and current_node.left == None:
+				current_node.left = Node(value)
+				break
+			
+			if value < current_node.value and current_node.right == None:
+				current_node.right = Node(value)
+				break
+			
+			if value > current_node.value and current_node.left != None:
+				current_node = current_node.left
+			elif value < current_node.value and current_node.right != None:
+				current_node = current_node.right
 
-tiny_tree.insert_right('right leaf')
-print(tiny_tree.right.value)
+tiny_tree = BinaryTree(5)
+print(tiny_tree)
+print(tiny_tree.root)
+
+print(tiny_tree.print_root())
