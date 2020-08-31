@@ -36,24 +36,25 @@ class BinaryTree(object):
 
 	def print_in_order(self):
 		current_node = self.root
-		# ordered = []
+		ordered = []
 
-		while current_node:
+		while current_node.left:
 			# print(current_node.value)
+			current_node = current_node.left
 
-			if current_node.left:
-				current_node = current_node.left
-			else:
-				# ordered.append(current_node.value)
+			if current_node.left == None:
 				print(current_node.value)
+
+				ordered.append(current_node.value)
+
 				current_node = current_node.parent
-				
-				# if current_node.right:
-				# 	current_node = current_node.right
-				# else:
-				# 	print(current_node.value)
-				# 	current_node = current_node.parent
-			
+				ordered.append(current_node.value)
+
+				if current_node.right:
+					current_node = current_node.right
+
+			print(ordered)
+
 
 tiny_tree = BinaryTree(5)
 root = tiny_tree.root
