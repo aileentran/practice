@@ -4,7 +4,6 @@
 class Node(object):
 	def __init__(self, value):
 		self.value = value
-		self.parent = None
 		self.left = None
 		self.right = None
 
@@ -21,12 +20,10 @@ class BinaryTree(object):
 		while True:
 			if value > current_node.value and current_node.right == None:
 				current_node.right = Node(value)
-				current_node.right.parent = current_node
 				break
 			
 			if value < current_node.value and current_node.left == None:
 				current_node.left = Node(value)
-				current_node.left.parent = current_node
 				break
 			
 			if value > current_node.value and current_node.right != None:
@@ -34,27 +31,15 @@ class BinaryTree(object):
 			elif value < current_node.value and current_node.left != None:
 				current_node = current_node.left
 
-	def print_in_order(self):
-		current_node = self.root
-		ordered = []
+	def print_in_order(self, node):
 
-		while current_node.left:
-			# print(current_node.value)
-			current_node = current_node.left
+		if node.left:
+			self.print_in_order(node.left)
 
-			if current_node.left == None:
-				print(current_node.value)
+		print(node.value)
 
-				ordered.append(current_node.value)
-
-				current_node = current_node.parent
-				ordered.append(current_node.value)
-
-				if current_node.right:
-					current_node = current_node.right
-
-			print(ordered)
-
+		if node.right:
+			self.print_in_order(node.right)
 
 tiny_tree = BinaryTree(5)
 root = tiny_tree.root
@@ -81,4 +66,4 @@ tiny_tree.insert(4)
 tiny_tree.insert(8)
 # print(root.right.right.value)
 
-tiny_tree.print_in_order()
+print(tiny_tree.print_in_order(root))
