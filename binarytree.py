@@ -26,9 +26,9 @@ class BinaryTree(object):
 				current_node.left = Node(value)
 				break
 			
-			if value > current_node.value and current_node.right != None:
+			if value > current_node.value and current_node.right:
 				current_node = current_node.right
-			elif value < current_node.value and current_node.left != None:
+			elif value < current_node.value and current_node.left:
 				current_node = current_node.left
 
 	def print_in_order(self, node):
