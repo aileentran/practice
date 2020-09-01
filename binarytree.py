@@ -41,6 +41,57 @@ class BinaryTree(object):
 		if node.right:
 			self.print_in_order(node.right)
 
+	def delete_node(self, node, value):
+
+		# base cases
+		if value == node.value:
+			print('curr', node.value)
+			print('Deleting - root')
+			# self.reconnect_tree(node)
+			return 
+
+		if value == node.left.value:
+			print('curr', node.value)
+			print('left node', node.left.value)
+			print('Deleting - left')
+			# self.reconnect_tree(node)
+			return
+
+		if value == node.right.value:
+			print('curr', node.value)
+			print('right node', node.right.value)
+			print('Deleting - right')
+			# self.reconnect_tree(node)
+			return 
+
+		# traversing tree
+		print(value, 'not direct child of', node.value)
+		if value < node.value:
+			print('value', value)
+			print('node.value', node.value)
+			self.delete_node(node.left, value)
+
+		if value > node.value:
+			print('value', value)
+			print('node.value', node.value)
+			self.delete_node(node.right, value)
+
+	def reconnect_tree(self, node):
+		"""Helper function for delete_node to reconnect tree."""
+
+			# if value == node.left.value:
+			# 	print('Deleting', node.left.value)
+			# 	if node.left.right:
+			# 		node.left = node.left.right
+			# 	elif node.left.left:
+			# 		node.left = node.left.left
+			# 	else:
+			# 		node.left = None
+
+			# if value == node.right.value:
+			# 	print('Deleting', node.right.value)
+			# 	node.right = node.right.right
+
 tiny_tree = BinaryTree(5)
 root = tiny_tree.root
 # print(tiny_tree.print_root())
@@ -66,4 +117,8 @@ tiny_tree.insert(4)
 tiny_tree.insert(8)
 # print(root.right.right.value)
 
-print(tiny_tree.print_in_order(root))
+# print(tiny_tree.print_in_order(root))
+
+print(tiny_tree.delete_node(root, 4))
+# consider what happens when deleting root :o 
+# consider if value NOT in tree .-. 
