@@ -41,7 +41,12 @@ class BinaryTree(object):
 		if node.right:
 			self.print_in_order(node.right)
 
+
 	def delete_node(self, node, value):
+		# check to see if value in tree
+		if node.left == None or node.right == None:
+			print(f'{value} does not exist in tree.')
+			return False
 
 		# base cases
 		if value == node.value:
@@ -78,9 +83,6 @@ class BinaryTree(object):
 
 	def reconnect_tree(self, curr_node, node_to_delete, left_or_right):
 		"""Helper function for delete_node to reconnect tree."""
-
-		# input: node, access to children!
-		# output: nooonee..?
 
 		# print('curr_node', curr_node.value)
 		# print('node_to_delete', node_to_delete.value)
@@ -141,9 +143,9 @@ tiny_tree.insert(4)
 tiny_tree.insert(8)
 # print(root.right.right.value)
 
-print(tiny_tree.delete_node(root, 4))
+print(tiny_tree.delete_node(root, 2))
 
-print(tiny_tree.print_in_order(root))
+# print(tiny_tree.print_in_order(root))
 
 # consider what happens when deleting root :o 
 # consider if value NOT in tree .-. 
