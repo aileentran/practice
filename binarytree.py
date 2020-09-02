@@ -82,10 +82,16 @@ class BinaryTree(object):
 			self.delete_node(node.right, value)
 
 	def reconnect_tree(self, curr_node, node_to_delete, left_or_right):
-		"""Helper function for delete_node to reconnect tree."""
+		"""Helper function for delete_node to reconnect tree - prioritizing connecting right (larger) values."""
 
 		# print('curr_node', curr_node.value)
 		# print('node_to_delete', node_to_delete.value)
+
+		# if left_or_right == 'root':
+		# 	self.root = node_to_delete.right
+		# 	print(self.root.value)
+		# 	self.reconnect_tree(self.root, node_to_delete, 'right')
+
 
 		if node_to_delete.right:
 			if left_or_right == 'left':
@@ -105,6 +111,7 @@ class BinaryTree(object):
 					curr_node.right.left = node_to_delete.left
 			return
 
+		# node to delete does NOT have a right value
 		if node_to_delete.left:
 			if left_or_right == 'left':
 				curr_node.left = node_to_delete.left
@@ -112,6 +119,12 @@ class BinaryTree(object):
 			else:
 				curr_node.right = node_to_delete.left
 				# print(curr_node.right.value)
+
+			# if node_to_delete.right:
+			# 	if left_or_right == 'left':
+			# 		curr_node.left.right = node_to_delete.right
+			# 	else:
+			# 		curr_node.right.right = node_to_delete.right
 			return
 
 		# no children
@@ -130,7 +143,7 @@ root = tiny_tree.root
 # print(tiny_tree.print_root())
 # print(root.parent)
 
-tiny_tree.insert(7)
+tiny_tree.insert(9)
 # print(root.right.value)
 # print(root.right.parent.value)
 
@@ -138,8 +151,12 @@ tiny_tree.insert(3)
 # print(root.left.value)
 # print(root.left.parent.value)
 
-tiny_tree.insert(1)
+tiny_tree.insert(2)
 # print(root.left.left.value)
+
+tiny_tree.insert(1)
+
+tiny_tree.insert(7)
 
 tiny_tree.insert(6)
 # print(root.right.left.value)
@@ -148,11 +165,18 @@ tiny_tree.insert(4)
 # print(root.left.right.value)
 
 tiny_tree.insert(8)
+tiny_tree.insert(12)
+tiny_tree.insert(10)
+tiny_tree.insert(13)
 # print(root.right.right.value)
 
-print(tiny_tree.delete_node(root, 3))
+print(tiny_tree.delete_node(root, 9))
 
-print(tiny_tree.print_in_order(root))
+print(root.value)
+print(root.right.value)
+
+tiny_tree.print_in_order(root)
+
 
 # consider what happens when deleting root :o 
 # consider if value NOT in tree .-. 
