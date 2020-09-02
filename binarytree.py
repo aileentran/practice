@@ -52,7 +52,7 @@ class BinaryTree(object):
 		if value == node.value:
 			# print('curr', node.value)
 			# print('Deleting - root')
-			# self.reconnect_tree(node)
+			self.reconnect_tree(node, node, 'root')
 			return 
 
 		if value == node.left.value:
@@ -66,7 +66,7 @@ class BinaryTree(object):
 			# print('curr', node.value)
 			# print('right node', node.right.value)
 			# print('Deleting - right')
-			self.reconnect_tree(node, node.left, 'right')
+			self.reconnect_tree(node, node.right, 'right')
 			return 
 
 		# traversing tree
@@ -96,6 +96,13 @@ class BinaryTree(object):
 				# print('Checking if deleting node.right')
 				curr_node.right = node_to_delete.right
 				# print(curr_node.right.value)
+
+			# checking if node_to_delete has a left node and attach to new node
+			if node_to_delete.left:
+				if left_or_right == 'left':
+					curr_node.left.left = node_to_delete.left
+				else:
+					curr_node.right.left = node_to_delete.left
 			return
 
 		if node_to_delete.left:
@@ -143,9 +150,9 @@ tiny_tree.insert(4)
 tiny_tree.insert(8)
 # print(root.right.right.value)
 
-print(tiny_tree.delete_node(root, 2))
+print(tiny_tree.delete_node(root, 3))
 
-# print(tiny_tree.print_in_order(root))
+print(tiny_tree.print_in_order(root))
 
 # consider what happens when deleting root :o 
 # consider if value NOT in tree .-. 
