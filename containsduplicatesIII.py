@@ -19,16 +19,33 @@ Given an array of integers, find out whether there are two distinct indices i an
 # outside loop, return false
 
 def contains_nearby_almost_duplicates(nums, k, t):
-
-    diff_t = 0
+    if len(nums) < 2:
+        return False
 
     i = 0
 
-    while i <= k:
-        num = nums[i]
-        print('num', num)
-        print('i', i)
+    while i <= k - 1:
+        num_i = nums[i]
+        
+        j = i + 1
+
+        while j <= k:
+            num_j = nums[j]
+            # print('num_i', num_i)
+            # print('num_j', num_j)
+
+            diff_t = abs(num_i - num_j)
+
+            # print('diff_t', diff_t)
+            if diff_t <= t:
+                return True
+
+            j += 1
+        # print('\n')
+
         i += 1
+
+    return False
 
 
 """
@@ -49,8 +66,26 @@ Output: false
 
 # Tests
 
-nums = [1,2,3,1], k = 3, t = 0
-# nums = [1,0,1,1], k = 1, t = 2
-# nums = [1,5,9,1,5,9], k = 2, t = 3
+# nums = [1,2,3,1]
+# k = 3
+# t = 0
+
+# nums = [1,0,1,1]
+# k = 1
+# t = 2
+
+# nums = [1,5,9,1,5,9]
+# k = 2
+# t = 3
+
+# nums = [-3,3]
+# k = 2
+# t = 4
+# output: ?; error = index of j out of range
+
+nums = [2,2]
+k = 3
+t = 0
+# output: True
 
 print(contains_nearby_almost_duplicates(nums, k, t))
