@@ -83,7 +83,7 @@ def longer_repeated_substring_pattern(string):
     max_num_of_slices = len(string) // 2
     potential_substrings = []
 
-    i = 2
+    i = 1
 
     while i <= max_num_of_slices:
         substring = string[:i]
@@ -117,11 +117,11 @@ def longer_repeated_substring_pattern(string):
 # runtime: O(n^2)
 # space complexity: O(n/2)
 
-print(longer_repeated_substring_pattern("acdcacdc"))
+# print(longer_repeated_substring_pattern("acdcacdc"))
 # Output: True
 # Explanation: "acdc" occurs twice!
 
-print(longer_repeated_substring_pattern("abcabdabcabdabcabd"))
+# print(longer_repeated_substring_pattern("abcabdabcabdabcabd"))
 # Output: True
 # Explanation: "abcabd" occurs 3 times
 
@@ -129,8 +129,13 @@ print(longer_repeated_substring_pattern("abcabcabcabd"))
 # Output: False
 # Explanation: "abcabc" and "abcabd"
 
-print(longer_repeated_substring_pattern("abcabcabcabc"))
+# print(longer_repeated_substring_pattern("abcabcabcabc"))
 
-print(longer_repeated_substring_pattern("aba"))
+# print(longer_repeated_substring_pattern("aba"))
 
 print(longer_repeated_substring_pattern("abab")) 
+
+print(longer_repeated_substring_pattern("bb"))
+
+print(longer_repeated_substring_pattern("bbb"))
+# Output: True
