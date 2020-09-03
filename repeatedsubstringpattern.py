@@ -7,6 +7,21 @@ together. You may assume the given string consists of lowercase
 English letters only and its length will not exceed 10000  
 
 """
+# Thoughts
+# input: string of lowercase letters
+# output: boolean - True if repeated substring, False otherwise
+
+# empty string
+# loop through string
+# add to empty string until hit the same letter again
+# now have substring
+
+# slice string and save to array
+# loop through the array and see if they all match substring
+# false if encounter something that doesn't match
+
+# outside loop
+# return true 
 
 def repeated_substring_pattern(string):
 
@@ -23,3 +38,6 @@ repeated_substring_pattern("aba")
 repeated_substring_pattern("abcabcabcabc")
 # Output: True
 # Explanation: It's the substring "abc" four times. (And the substring "abcabc" twice.)
+
+# considerations: 
+# substring has repeated letters -> "abcad" or "acdc"
