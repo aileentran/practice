@@ -52,22 +52,22 @@ def repeated_substring_pattern(string):
     return True
 
 # Tests
-print(repeated_substring_pattern("abab")) 
+# print(repeated_substring_pattern("abab")) 
 # Output: True
 # Explanation: It's the substring "ab" twice.
 
-print(repeated_substring_pattern("aba"))
+# print(repeated_substring_pattern("aba"))
 # Output: False
 
-print(repeated_substring_pattern("abcabcabcabc"))
+# print(repeated_substring_pattern("abcabcabcabc"))
 # Output: True
 # Explanation: It's the substring "abc" four times. (And the substring "abcabc" twice.)
-
+#######################################################
 # considerations: 
 # substring has repeated letters -> "abcad" or "acdc" or "abcabd" etc. 
 # what about one letter?
 
-# Considering larger substrings OR ones with repeated letters:
+# Thoughts
 
 # we slice the strings and compare them instead?
 # smallest substring is 2 letters
@@ -76,17 +76,61 @@ print(repeated_substring_pattern("abcabcabcabc"))
 # if at 2 letter substrings and no repeats, return false
 # recursion?
 
-def recursive_repeated_substring_pattern(string):
+# okay, want to split the string into 2, 3, 4, etc until length of substring is 2
+
+def longer_repeated_substring_pattern(string):
+    # making all potential substrings
+    max_num_of_slices = len(string) // 2
+    potential_substrings = []
+
+    i = 2
+
+    while i <= max_num_of_slices:
+        substring = string[:i]
+        potential_substrings.append(substring)
+
+        i += 1
+
+    # slice up string and compare to potential substrings
+    for substring in potential_substrings:
+        match = False
+        i = 0
+
+        while i < len(string):
+            sliced_string = string[i: i + len(substring)]
+
+            if sliced_string == substring:
+                match = True
+            
+            else:
+                match = False
+                break
+
+            i += len(substring)
+
+        if match == True:
+            return True
+
+    return False
 
 
-print(recursive_repeated_substring_pattern("acdcacdc"))
+# runtime: O(n^2)
+# space complexity: O(n/2)
+
+print(longer_repeated_substring_pattern("acdcacdc"))
 # Output: True
 # Explanation: "acdc" occurs twice!
 
-print(recursive_repeated_substring_pattern("abcabdabcabdabcabd"))
+print(longer_repeated_substring_pattern("abcabdabcabdabcabd"))
 # Output: True
 # Explanation: "abcabd" occurs 3 times
 
-print(recursive_repeated_substring_pattern("abcabcabcabd"))
+print(longer_repeated_substring_pattern("abcabcabcabd"))
 # Output: False
 # Explanation: "abcabc" and "abcabd"
+
+print(longer_repeated_substring_pattern("abcabcabcabc"))
+
+print(longer_repeated_substring_pattern("aba"))
+
+print(longer_repeated_substring_pattern("abab")) 
