@@ -23,6 +23,15 @@ English letters only and its length will not exceed 10000
 # outside loop
 # return true 
 
+# Considering larger substrings OR ones with repeated letters:
+
+# we slice the strings and compare them instead?
+# smallest substring is 2 letters
+# keep slicing and comparing substrings until we have 2 letter length substrings
+# at any point if all slices are the same = return true
+# if at 2 letter substrings and no repeats, return false
+# recursion?
+
 def repeated_substring_pattern(string):
     substring = ""
 
@@ -57,3 +66,27 @@ print(repeated_substring_pattern("abcabcabcabc"))
 # considerations: 
 # substring has repeated letters -> "abcad" or "acdc" or "abcabd" etc. 
 # what about one letter?
+
+# Considering larger substrings OR ones with repeated letters:
+
+# we slice the strings and compare them instead?
+# smallest substring is 2 letters
+# keep slicing and comparing substrings until we have 2 letter length substrings
+# at any point if all slices are the same = return true
+# if at 2 letter substrings and no repeats, return false
+# recursion?
+
+def recursive_repeated_substring_pattern(string):
+
+
+print(recursive_repeated_substring_pattern("acdcacdc"))
+# Output: True
+# Explanation: "acdc" occurs twice!
+
+print(recursive_repeated_substring_pattern("abcabdabcabdabcabd"))
+# Output: True
+# Explanation: "abcabd" occurs 3 times
+
+print(recursive_repeated_substring_pattern("abcabcabcabd"))
+# Output: False
+# Explanation: "abcabc" and "abcabd"
