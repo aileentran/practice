@@ -24,20 +24,36 @@ English letters only and its length will not exceed 10000
 # return true 
 
 def repeated_substring_pattern(string):
+    substring = ""
 
+    for letter in string:
+        if letter not in substring:
+            substring += letter
 
+    i = 0
+
+    while i < len(string):
+        sliced_string = string[i: i + len(substring)]
+
+        if sliced_string != substring:
+            return False
+
+        i += len(substring)
+
+    return True
 
 # Tests
-repeated_substring_pattern("abab") 
+print(repeated_substring_pattern("abab")) 
 # Output: True
 # Explanation: It's the substring "ab" twice.
 
-repeated_substring_pattern("aba")
+print(repeated_substring_pattern("aba"))
 # Output: False
 
-repeated_substring_pattern("abcabcabcabc")
+print(repeated_substring_pattern("abcabcabcabc"))
 # Output: True
 # Explanation: It's the substring "abc" four times. (And the substring "abcabc" twice.)
 
 # considerations: 
-# substring has repeated letters -> "abcad" or "acdc"
+# substring has repeated letters -> "abcad" or "acdc" or "abcabd" etc. 
+# what about one letter?
