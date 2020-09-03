@@ -115,7 +115,7 @@ def longer_repeated_substring_pattern(string):
 
 
 # runtime: O(n^2)
-# space complexity: O(n/2)
+# space complexity: O(n)
 
 # print(longer_repeated_substring_pattern("acdcacdc"))
 # Output: True
