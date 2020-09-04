@@ -105,4 +105,5 @@ nums = [1,5,9,1,5,9]
 k = 2
 t = 3
 # runtime error! 
+
 print(contains_nearby_almost_duplicates(nums, k, t))
