@@ -22,26 +22,29 @@ def contains_nearby_almost_duplicates(nums, k, t):
     if len(nums) < 2:
         return False
 
+    # in case k is > index of nums
+    k = min(k, len(nums) - 1)
+
     i = 0
 
-    while i <= k - 1:
+    while i <= i + k - 1:
         num_i = nums[i]
         
         j = i + 1
 
-        while j <= k:
+        while j <= i + k:
             num_j = nums[j]
-            # print('num_i', num_i)
-            # print('num_j', num_j)
+            print('num_i', num_i)
+            print('num_j', num_j)
 
             diff_t = abs(num_i - num_j)
 
-            # print('diff_t', diff_t)
+            print('diff_t', diff_t)
             if diff_t <= t:
                 return True
 
             j += 1
-        # print('\n')
+        print('\n')
 
         i += 1
 
@@ -83,9 +86,23 @@ Output: false
 # t = 4
 # output: ?; error = index of j out of range
 
-nums = [2,2]
-k = 3
-t = 0
+# nums = [2,2]
+# k = 3
+# t = 0
 # output: True
 
+# nums = [3,6,0,4]
+# k = 2
+# t = 2
+# output: True
+
+# nums = [3,6,0,2]
+# k = 2
+# t = 2
+# output: True
+
+nums = [1,5,9,1,5,9]
+k = 2
+t = 3
+# runtime error! 
 print(contains_nearby_almost_duplicates(nums, k, t))
