@@ -85,4 +85,5 @@ grid2 = [
 [0, 0, 0, 2, 0, 0],
 [0, 0, 1, 2, 4, 0]
 ]
-print(max_sum(grid2))
+# result = 19
+print(max_sum(grid1))
