@@ -6,13 +6,17 @@ output: list of shifted integers
 """
 
 def rotate_left(nums, shift):
-	shifted = []
+    shifted = [None] * len(nums)
 
-	for num, idx in enumerate(nums):
-		print('idx', idx)
-		print('num', num)
+    for idx, num in enumerate(nums):
+        shifted[idx - shift] = num
+
+    return shifted
 
 nums = [1, 2, 3, 4, 5]
-shift = 4
+# shift = 4
 # expect: 5 1 2 3 4
+
+shift = 2
+# expect: 3 4 5 1 2
 print(rotate_left(nums, shift))
