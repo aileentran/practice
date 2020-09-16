@@ -12,27 +12,34 @@ def minimum_swaps(arr):
     counter = 0
     arr_idx_tracker = [0] * len(arr)
 
-    for idx, num in enumerate(arr):
-        arr_idx_tracker[num - 1] = idx
-
-    print('arr_idx_tracker', arr_idx_tracker)
+    for idx, val in enumerate(arr):
+        arr_idx_tracker[val - 1] = idx
 
     for idx, num in enumerate(arr):
+        # print('arr', arr)
+        # print('arr_idx_tracker', arr_idx_tracker)
         if num != idx + 1:
-            print('arr before!', arr)
+            # print('val supposed to have', idx + 1)
             idx_of_correct_val = arr_idx_tracker[idx]
-            print('idx_of_correct_val', idx_of_correct_val)
+            # print('where it is', idx_of_correct_val)
         
             arr[idx], arr[idx_of_correct_val] = idx + 1, arr[idx]
-            print('arr', arr)
+            # print('swapped!', arr)
 
-            print('updating arr_idx_tracker. beep boop boop!')
-            print('arr_idx_tracker[idx]', arr_idx_tracker[idx])
-            print('arr_idx_tracker[arr[idx_of_correct_val] - 1]', arr_idx_tracker[arr[idx_of_correct_val] - 1])
+            # print('updating arr_idx_tracker. beep boop boop!')
+            # print('idx', idx)
+            # print('arr_idx_tracker[idx]', arr_idx_tracker[idx])
+
+            # print('idx_of_correct_val', idx_of_correct_val)
+            # print(arr[idx_of_correct_val])
+            # print('arr_idx_tracker[arr[idx_of_correct_val] - 1]', arr_idx_tracker[arr[idx_of_correct_val] - 1])
 
             arr_idx_tracker[idx], arr_idx_tracker[arr[idx_of_correct_val] - 1] = idx, idx_of_correct_val
 
+            # print('arr_idx_tracker', arr_idx_tracker)
             counter += 1
+
+            # print('\n')
 
     return counter
 
