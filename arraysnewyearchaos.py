@@ -46,7 +46,7 @@ def minimum_bribes(q):
 q1 = [2, 1, 5, 3, 4] #3
 q2 = [2, 5, 1, 3, 4] #Too chaotic
 q3 = [5, 1, 2, 3, 7, 8, 6, 4] #Too chaotic
-q4 = [1, 2, 5, 3, 7, 8, 6, 4] #7
+q4 = [1, 2, 5, 3, 7, 8, 6, 4] #7 
 
 print(minimum_bribes(q4))
 
