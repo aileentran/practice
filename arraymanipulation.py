@@ -22,6 +22,30 @@ Hackerrank Interview Prep - Arrays
 # see if need to loop through list to find largest sum
 # return largest sum
 
+# RUNTIME ERROR!
+# def arrayManipulation(n, queries):
+#     list_of_n = [0] * n
+#     max_sum = 0
+
+#     for q in queries:
+#         start, end, summand = q
+#         print('start', start)
+#         print('end', end)
+#         print('summand', summand)
+
+#         i = start - 1
+#         while i < end:
+#             list_of_n[i] += summand
+#             if list_of_n[i] > max_sum:
+#                 max_sum = list_of_n[i]
+#             i += 1
+#         print(list_of_n)
+    
+#     return max_sum
+
+# How about.. we only sum things that we touch otherwise leave it 0?
+# take out unnested loop
+# if a start or end is within the range of a previous start / end, 
 def arrayManipulation(n, queries):
     list_of_n = [0] * n
     max_sum = 0
@@ -32,12 +56,15 @@ def arrayManipulation(n, queries):
         print('end', end)
         print('summand', summand)
 
-        i = start - 1
-        while i < end:
-            list_of_n[i] += summand
-            if list_of_n[i] > max_sum:
-                max_sum = list_of_n[i]
-            i += 1
+        list_of_n[start - 1] += summand
+        list_of_n[end - 1] += summand
+
+        if list_of_n[start - 1] > max_sum:
+        	max_sum = list_of_n[start-1]
+
+        if list_of_n[end - 1] > max_sum:
+        	max_sum = list_of_n[end - 1]
+
         print(list_of_n)
     
     return max_sum
@@ -54,3 +81,5 @@ queries2 = [[1, 5, 3], [4, 8, 7], [6, 9, 1]]
 n3 = 10
 queries3 = [[2, 6, 8], [3, 5, 7], [1, 8, 1], [5, 9, 15]]
 # output: 31
+
+print(arrayManipulation(n2, queries2))
