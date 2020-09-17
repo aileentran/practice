@@ -1,5 +1,6 @@
 """
 Hackerrank Interview Prep - Arrays
+# Note: wants us to print the results instead of directly return it?
 """
 # thoughts
 # input: list of integers
@@ -40,6 +41,27 @@ def minimum_bribes(q):
     # print('all_swaps', all_swaps)
     # print('actual_swaps', actual_swaps )
     return actual_swaps
+
+# attempts 2: minimum swaps 2 idea?
+# take in the mixed up queue
+# recreate the ordered thingy with 2 swaps or lessss
+# if a number bribes more than 2 spaces in one go, return "Too chaotic"
+
+# counter = 0
+# list: idx (val of queue - 1) and the value (idx is in queue)
+
+# loop through the queue and make the list of idxs to keep track
+
+# empty bribes counter
+
+# then loop through the queue
+# if the bribes counter is > 2, return "too chaotic"
+# if it's not the "right" 
+# find the idx of where the thing actually is
+# increment it closer to the actual location by 1
+# adjust the list of idxs to match
+# bribes += 1
+
 
 
 # tests
