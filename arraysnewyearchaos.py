@@ -49,6 +49,8 @@ def minimum_bribes(q):
 
 # counter = 0
 # list: idx (val of queue - 1) and the value (idx is in queue)
+# OR JUST MAKE A DICTIONARY @.@""
+# key = item in list, value: idx of where it is at!
 
 # loop through the queue and make the list of idxs to keep track
 
@@ -62,6 +64,11 @@ def minimum_bribes(q):
 # adjust the list of idxs to match
 # bribes += 1
 
+def minimum_bribes2(q):
+    swaps = 0
+    current_locations = {}
+
+    print(q)
 
 
 # tests
@@ -70,7 +77,7 @@ q2 = [2, 5, 1, 3, 4] #Too chaotic
 q3 = [5, 1, 2, 3, 7, 8, 6, 4] #Too chaotic
 q4 = [1, 2, 5, 3, 7, 8, 6, 4] #7 
 
-print(minimum_bribes(q4))
+print(minimum_bribes2(q4))
 
 
 
