@@ -25,21 +25,16 @@ def minimum_bribes(q):
 
     for idx, num in enumerate(q):
         difference = 0
-
-        print('idx', idx)
-        print('num', num)
+        
         if num != idx + 1:
-            difference = abs(num - (idx + 1))
-            print('difference', difference)
+            difference = abs(num - (idx + 1))   
+        
         if difference > 2:
             return "Too chaotic"
         
         all_swaps += difference
-        print('all_swaps', all_swaps)
 
     actual_swaps = all_swaps // 2
-    # print('all_swaps', all_swaps)
-    # print('actual_swaps', actual_swaps )
     return actual_swaps
 
 # attempts 2: minimum swaps 2 idea?
@@ -64,42 +59,19 @@ def minimum_bribes(q):
 # adjust the list of idxs to match
 # bribes += 1
 
-def minimum_bribes2(q):
-    swaps = 0
-    current_locations = {}
+# def minimum_bribes2(q):
+#     bribes = 0
+#     current_locations = {}
 
-    print(q)
+#     for idx, person in enumerate(q):
+#         if person not in current_locations:
+#             current_locations[person] = idx
 
+#     for idx, person in enumerate(q):
+#         if bribes > 2:
+#             return "Too chaotic"
 
-# tests
-q1 = [2, 1, 5, 3, 4] #3
-q2 = [2, 5, 1, 3, 4] #Too chaotic
-q3 = [5, 1, 2, 3, 7, 8, 6, 4] #Too chaotic
-q4 = [1, 2, 5, 3, 7, 8, 6, 4] #7 
-
-print(minimum_bribes2(q4))
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+###################################################
 # first solution from awhile ago
 def minimumBribes(q):
     swaps = 0
@@ -108,12 +80,15 @@ def minimumBribes(q):
     for num in q:
         places[num] = 0
 
+    print('original q', q)
+
     while True:
         for num in q:
             if places[num] > 2: 
                 print("Too chaotic")
                 return
 
+        # when q is finally in order
         if q == list(range(1, len(q) + 1)):
             print(swaps)
             return
@@ -121,9 +96,32 @@ def minimumBribes(q):
         i = 0
 
         while i < len(q) - 1:
+            print('i', i)
             if q[i] > q[i + 1]:
+                print('before swap')
+                print('q[i]', q[i])
+                print('q[i+1]', q[i+1])
+
                 places[q[i]] += 1
                 q[i], q[i + 1] = q[i + 1], q[i]
                 swaps += 1
 
+                print('places', places)
+
+                print('after swap')
+                print('q[i]', q[i])
+                print('q[i+1]', q[i+1])
+                print('q', q)
+
+                print('\n')
+
             i += 1
+
+# tests
+q1 = [2, 1, 5, 3, 4] #3
+q2 = [2, 5, 1, 3, 4] #Too chaotic
+q3 = [5, 1, 2, 3, 7, 8, 6, 4] #Too chaotic
+q4 = [1, 2, 5, 3, 7, 8, 6, 4] #7 
+
+# print(minimum_bribes(q4))
+print(minimumBribes(q4))
