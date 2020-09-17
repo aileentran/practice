@@ -75,13 +75,15 @@ def minimum_bribes(q):
 # first solution from awhile ago
 def minimumBribes(q):
     swaps = 0
-    places = {}
+    places = {} 
 
+    # counter for how many individuals swapped in line
     for num in q:
         places[num] = 0
 
     print('original q', q)
 
+    # runs until list is in order or more than 2 swaps
     while True:
         for num in q:
             if places[num] > 2: 
@@ -96,24 +98,11 @@ def minimumBribes(q):
         i = 0
 
         while i < len(q) - 1:
-            print('i', i)
+            # if current num is bigger than the next num
             if q[i] > q[i + 1]:
-                print('before swap')
-                print('q[i]', q[i])
-                print('q[i+1]', q[i+1])
-
                 places[q[i]] += 1
                 q[i], q[i + 1] = q[i + 1], q[i]
                 swaps += 1
-
-                print('places', places)
-
-                print('after swap')
-                print('q[i]', q[i])
-                print('q[i+1]', q[i+1])
-                print('q', q)
-
-                print('\n')
 
             i += 1
 
