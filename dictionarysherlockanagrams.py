@@ -85,3 +85,10 @@ def sherlockAndAnagrams(s):
 
 def sortedString(letters):
     return ''.join(sorted(letters))
+
+# Tests
+l1 = 'abba' # 4
+l2 = 'abcd' # 0
+l3 = 'ifailuhkqq' # 3
+l4 = 'kkkk' # 10
+l5 = 'cdcd' # 5
