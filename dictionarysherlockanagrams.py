@@ -86,9 +86,42 @@ def sherlockAndAnagrams(s):
 def sortedString(letters):
     return ''.join(sorted(letters))
 
+###################################
+def sherlockSolution(s):
+	n = len(s)
+	pairs = 0
+
+	for i in range(1, n): #length of substring
+		# print('i', i)
+		# print('s[i]', s[i])
+		print('length of substring', i)
+		substring_counter = {}
+
+		for k in range(n - i + 1): #looping through string and staying within bounds
+			# print('k', k)
+			# print('k + i', k + i)
+			print(s[k:k + i])
+			substring = ''.join(sorted(s[k:k + i]))
+			# print(substring)
+			if substring not in substring_counter:
+				substring_counter[substring] = 1
+			else:
+				substring_counter[substring] += 1
+
+			pairs += substring_counter[substring] - 1
+
+			print(substring_counter)
+			print('adding pair', substring_counter[substring] - 1)
+			print(pairs)
+			print('\n')
+
+	return pairs
 # Tests
 l1 = 'abba' # 4
 l2 = 'abcd' # 0
 l3 = 'ifailuhkqq' # 3
 l4 = 'kkkk' # 10
 l5 = 'cdcd' # 5
+l6 = 'mom' # 2
+
+print(sherlockSolution(l3))
