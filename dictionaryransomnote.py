@@ -1,5 +1,5 @@
 """
-Hackerrank Interview Prep - Arrays
+Hackerrank Interview Prep - Dictionaries/Hash Maps
 """
 
 # Notes
