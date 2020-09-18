@@ -46,6 +46,7 @@ Hackerrank Interview Prep - Arrays
 # How about.. we only sum things that we touch otherwise leave it 0?
 # take out unnested loop
 # if a start or end is within the range of a previous start / end, 
+# helper function to figure out overlap of ranges to sum! 
 def arrayManipulation(n, queries):
     list_of_n = [0] * n
     max_sum = 0
