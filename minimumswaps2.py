@@ -1,7 +1,46 @@
 """
 Hackerrank Interview Prep - Arrays
 """
+# Notes
+# input: unordered array of ints from 1 - len(array)
+# output: integer - minimum number of swaps to get it back in order
 
+# empty swap counter
+# an array to keep track of idxs of where the value is SUPPOSED to be
+# loop through the array and make it 
+
+# loop through the array
+# if the current value NOT idx + 1, 
+# find where it is in the current array and swap it
+# update the tracker array
+# anddd.. increase the swap counter 
+
+# outside loop, return swap counter
+
+# Complete the minimumSwaps function below.
+def minimumSwaps(arr):
+    # idx = array value, value = idx of where it's at
+    curr_idxs = [0] * len(arr) 
+    swaps = 0
+
+    for idx, num in enumerate(arr):
+        curr_idxs[num - 1] = idx
+
+    for idx, num in enumerate(arr):
+        if num != idx + 1:
+            curr_idx = curr_idxs[idx]
+            # swap values
+            arr[idx], arr[curr_idx] = idx + 1, arr[idx]
+            # update curr_swaps
+            curr_idxs[idx], curr_idxs[arr[curr_idx] - 1] = idx, curr_idx
+            
+            swaps += 1
+
+    return swaps
+
+
+
+################################################
 # thoughts
 # input = list of integers
 # output = integer -> minimum number of swaps
