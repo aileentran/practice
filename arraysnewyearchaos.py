@@ -2,6 +2,59 @@
 Hackerrank Interview Prep - Arrays
 # Note: wants us to print the results instead of directly return it?
 """
+# recent attempt
+# Notes
+# input: q -> list of nums from 1 - len(q)
+# output: int - minimum number of bribes or "Too chaotic"
+# total_bribes ~ each person can swap up 2 times and that's it!
+# goal: get the line back in order and count the swaps
+
+# empty bribes counter 
+# have an array to keep track of idxs and where the people actually ar
+# array idx = people - 1; array value = idx of where person is
+# maybe..
+# or dictionary for a bribe counter. key = person, value is swaps
+
+# have an infinite loop
+# maybe inner counter here..? if bribes >= 2, return "Too chaotic"
+# if the person is > idx + 1, swap with the person behind it
+
+# Complete the minimumBribes function below.
+def minimumBribes2(q):
+    total_bribes = 0
+    bribe_counter = {}
+
+    for person in q:
+        bribe_counter[person] = 0
+    
+    while q != range(1, len(q)):
+        print(q)
+        for person in bribe_counter: #try to remove loop
+            if bribe_counter[person] >= 2:
+                return "Too chaotic"
+        
+        # if q == range(1, len(q)):
+        #     return total_bribes
+        
+        for idx, person in enumerate(q):
+            # print('idx', idx)
+            # print('person', person)
+            if person > idx + 1:
+                q[idx], q[idx + 1] = q[idx + 1], q[idx]
+                bribe_counter[person] += 1
+                total_bribes += 1
+                # print(q)
+                # print(bribe_counter)
+    
+        print(q)
+        print(bribe_counter)
+        print(total_bribes)
+        
+    return total_bribes
+
+
+
+############################################################
 # thoughts
 # input: list of integers
 # output: integer -> minimum number of bribes to get to this point
@@ -113,4 +166,4 @@ q3 = [5, 1, 2, 3, 7, 8, 6, 4] #Too chaotic
 q4 = [1, 2, 5, 3, 7, 8, 6, 4] #7 
 
 # print(minimum_bribes(q4))
-print(minimumBribes(q4))
+print(minimumBribes2(q4))
