@@ -21,19 +21,18 @@ Hackerrank Interview Prep - Dictionaries/Hash Maps
 # if 1, append value to array and add to dictionary (or increase counter)
 # if 2, check if in dictionary, if not move on, if it is, reduce by 1 and remove from array
 # if 3, look to see if in dictionary and if count matches value
-# return 1 if true, 0 if false
+# PRINT 1 if true, 0 if false
 # Complete the freqQuery function below.
 def freqQuery(queries):
-    nums_list = []
+    # nums_list = []
     nums_dict = {}
 
     for query in queries:
-        print(query)
+        # print('query', query)
         op, num = query
-        # print('op', op)
-        # print('num', num)
+
         if op == 1:
-            nums_list.append(num)
+            # nums_list.append(num)
             if num not in nums_dict:
                 nums_dict[num] = 1
             else:
@@ -41,22 +40,23 @@ def freqQuery(queries):
         
         if op == 2:
             if num in nums_dict:
-                idx = nums_list.index(num)
-                nums_list.pop(idx)
+                # idx = nums_list.index(num)
+                # nums_list.pop(idx)
 
                 nums_dict[num] -= 1
+            
                 if nums_dict[num] <= 0:
-                    nums_dict.pop(num)
+                        nums_dict.pop(num)
         
         if op == 3:
-            for num_key in nums_dict:
-                if nums_dict[num_key] == num:
-                    return 1
-                else:
-                    return 0
+            values = list(nums_dict.values())   
+            if num in values:
+                print(1)
+            else:
+                print(0)
 
-        print(nums_list)
-        print(nums_dict)
+        # print(nums_list)
+        # print(nums_dict)
 
 # Tests
 q1 = [
@@ -68,5 +68,23 @@ q1 = [
 [1, 6],
 [2, 5],
 [3, 2]
-]
-print(freqQuery(q1))
+] # 0 1
+q2 = [
+[3, 4],
+[2, 1003],
+[1, 16],
+[3, 1]
+] # 0 1
+q3 = [
+[1, 3],
+[2, 3],
+[3, 2],
+[1, 4],
+[1, 5],
+[1, 5],
+[1, 4],
+[3, 2],
+[2, 4],
+[3, 2]
+] # 0 1 1
+freqQuery(q3)
