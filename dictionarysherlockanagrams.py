@@ -1,7 +1,47 @@
 """
 Hackerrank Interview Prep - Dictionaries/Hash Maps
 """
+# Notes
+# input: string of letters
+# output: integer -> number of annagram pairs in string
 
+# make an empty dictionary to hold all potential anagrams of all lengths: annagram in alpha order (key), counter (value)
+# pairs counter set to 0
+
+# loop through length of annagram: 1 to total length - 1
+# loop through the string
+# slice the string and order it in alpha order  -> helper function?
+# add it to the dictionary
+# whenever the value of dictionary % 2 = 0, increase pairs counter +=1 
+
+# outside nested loop, return paris counter
+
+def sherlockAndAnagrams2(s):
+    anagrams = {}
+    pairs = 0
+    
+    for length in range(1, len(s)):
+        for idx, chars in enumerate(s):
+            # print('idx', idx)
+            # print('length', length)
+            if idx + length <= len(s):
+                anagram = s[idx: idx + length]
+                alpha = sortedString(anagram)
+                if alpha not in anagrams:
+                    anagrams[alpha] = 1
+                else:
+                    anagrams[alpha] += 1
+                
+                # print(anagrams)
+
+                pairs += anagrams[alpha] - 1
+                # print(pairs)
+    
+    return pairs
+
+
+
+#################################################################
 # Notes and thoughts
 # input: string
 # output: integer - number of anagrammatic pairs
@@ -124,4 +164,4 @@ l4 = 'kkkk' # 10
 l5 = 'cdcd' # 5
 l6 = 'mom' # 2
 
-print(sherlockSolution(l3))
+print(sherlockSolution(l4))
