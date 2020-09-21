@@ -23,35 +23,44 @@ Hackerrank Interview Prep - Arrays
 def minimumBribes2(q):
     total_bribes = 0
     bribe_counter = {}
+    in_order = []
+    
+    for num in range(1, len(q) + 1):
+        in_order.append(num)
 
     for person in q:
         bribe_counter[person] = 0
-    
-    while q != range(1, len(q)):
+
+    while True:
         print(q)
         for person in bribe_counter: #try to remove loop
-            if bribe_counter[person] >= 2:
+            if bribe_counter[person] > 2:
                 return "Too chaotic"
         
-        # if q == range(1, len(q)):
-        #     return total_bribes
+        if q == in_order:
+            return total_bribes
         
         for idx, person in enumerate(q):
-            # print('idx', idx)
-            # print('person', person)
+            print(idx, q)
             if person > idx + 1:
                 q[idx], q[idx + 1] = q[idx + 1], q[idx]
                 bribe_counter[person] += 1
                 total_bribes += 1
-                # print(q)
-                # print(bribe_counter)
     
-        print(q)
+        
         print(bribe_counter)
         print(total_bribes)
         
     return total_bribes
 
+# tests
+q1 = [2, 1, 5, 3, 4] #3
+q2 = [2, 5, 1, 3, 4] #Too chaotic
+q3 = [5, 1, 2, 3, 7, 8, 6, 4] #Too chaotic
+q4 = [1, 2, 5, 3, 7, 8, 6, 4] #7 
+
+# print(minimum_bribes(q4))
+print(minimumBribes2(q4))
 
 
 ############################################################
@@ -159,11 +168,4 @@ def minimumBribes(q):
 
             i += 1
 
-# tests
-q1 = [2, 1, 5, 3, 4] #3
-q2 = [2, 5, 1, 3, 4] #Too chaotic
-q3 = [5, 1, 2, 3, 7, 8, 6, 4] #Too chaotic
-q4 = [1, 2, 5, 3, 7, 8, 6, 4] #7 
 
-# print(minimum_bribes(q4))
-print(minimumBribes2(q4))
