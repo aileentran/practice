@@ -9,15 +9,15 @@ def countSwaps(a):
     swaps = 0
     
     for i in range(len(a)): #follow each element in arr
-        print(i)
+        # print(i)
         for k in range(len(a) - 1): #move ele and swap
-            print('a[k]', a[k])
-            print('a[k + 1]', a[k + 1])
+            # print('a[k]', a[k])
+            # print('a[k + 1]', a[k + 1])
             if a[k] > a[k + 1]:
                 a[k], a[k + 1] = a[k + 1], a[k]
                 swaps += 1
-                print(a)
-                print(swaps)
+                # print(a)
+                # print(swaps)
     
     print(f'Array is sorted in {swaps} swaps.')
     print(f'First Element: {a[0]}')
@@ -25,6 +25,7 @@ def countSwaps(a):
 
 
 ########################################################
+# Initial attempt
 # Complete the countSwaps function below.
 def countSwaps(a):
     swaps = 0
