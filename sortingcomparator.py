@@ -19,6 +19,7 @@ class Player:
             # print('b', b.name)
             # since scores are in descending order, we have to go backwards for alphabetized names = in order
             if b.name > a.name:
+                # since the scores are the same, can just swap names!
                 b.name, a.name = a.name, b.name
                 # print('a', a.name)
                 # print('b', b.name)
