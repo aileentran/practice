@@ -8,6 +8,8 @@ Hackerrank Interview Prep - Sorting
 # so.. for descending: a > b = -1, a == b = 0, a < b = 1
 # returns c, b, a
 
+# info on comparators
+# https://docs.oracle.com/javase/7/docs/api/java/util/Comparator.html#compare(T,%20T)
 class Player:
     def __init__(self, name, score):
         self.name = name
@@ -26,7 +28,7 @@ class Player:
                 return -1
             else:
                 return 1
-        
+
         # different names, different scores
         if a.score > b.score:
             return -1
