@@ -1,7 +1,41 @@
 """
 Hackerrank Interview Prep - Sorting
 """
+# Notes
+# comparator function returns -1, 0, 1
+# for ascending (or alphabetical order): a < b = -1, a == b = 0, a > b = -1
+# returns a, b, c
+# so.. for descending: a > b = -1, a == b = 0, a < b = 1
+# returns c, b, a
 
+class Player:
+    def __init__(self, name, score):
+        self.name = name
+        self.score = score
+    def __repr__(self):
+        return str(self.name) + " "  + str(self.score)
+    def comparator(a, b):
+        #same name and same score
+        if a == b:
+            return 0
+
+        # same score but different names
+        if a.score == b.score:
+            #names are in ascending/alpha order!
+            if a.name < b.name: 
+                return -1
+            else:
+                return 1
+        
+        # different names, different scores
+        if a.score > b.score:
+            return -1
+
+        if a.score < b.score:
+            return 1
+
+#####################################################
+# first attempt and 4/8 right
 class Player:
     def __init__(self, name, score):
         self.name = name
