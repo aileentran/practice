@@ -19,6 +19,8 @@ Leetcode: 79. Word Search
 # might want to fail early? if it fails at any step, return false
 # if can go through the whole thing and find the word, return true
 
+# CURR STATUS
+# can find match but dictionary of directions stays static 
 
 def exist(self, board: List[List[str]], word: str) -> bool:
     given = ""
