@@ -24,6 +24,9 @@
 # see if >= comparison, yes = notification += 1, no = continue\
 
 # outside loop, return notification
+
+# Error - some test cases; does not run within limits
+
 # Complete the activityNotifications function below.
 def activityNotifications(expenditure, d):
     comparison = 0
