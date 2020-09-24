@@ -54,5 +54,5 @@ def min_steps(num):
 num1 = 10
 num2 = 3
 
-print(min_steps(num2))
+print(min_steps(1000))
 
