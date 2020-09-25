@@ -56,9 +56,6 @@ def min_steps2(goal):
 
 
 
-
-
-
 ##########################################################
 # Notes
 # input: int - number we are trying to generate
