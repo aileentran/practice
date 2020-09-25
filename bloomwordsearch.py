@@ -2,6 +2,44 @@
 Leetcode: 79. Word Search
 """
 # Notes
+
+def exist(board, word):
+	return
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+#Tests
+board =
+[
+  ['A','B','C','E'],
+  ['S','F','C','S'],
+  ['A','D','E','E']
+]
+word1 = "ABCCED" #True
+word2 = "SEE" #True
+word3 = "ABCB" #False
+
+print(exist(board, word1))
+
+
+
+"""
+# Notes
 # input: 2d array of letters, word string
 # output: boolean - true if can find the word, false otherwise
 
@@ -64,3 +102,4 @@ def exist(self, board: List[List[str]], word: str) -> bool:
                     break
             print(directions)
         return 
+"""
