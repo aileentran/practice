@@ -11,50 +11,53 @@ Leetcode: 79. Word Search
 # also need a way to return false .-. 
 
 def exist(board, word):
-    given = ""
-    start = [0, 0] #[row, col]
+    starts = [] #list of potential starting things
+    match = ""
     row_edge = len(board)
     col_edge = len(board[0])
-    
-#       finding the starting idxs
+
+    # creating list of starts 
     for row_idx, row in enumerate(board):
         if word[0] in row:
             col_idx = row.index(word[0])
-            curr = [row_idx, col_idx]
-            given += board[row_idx][col_idx]
-            break
-            
-    if len(given) == 0:
-        return False
-    
+            starts.append((row_idx, col_idx))
+
     while True:
-        if given == word:
+        if match == word:
             return True
         
-        curr_row, curr_col = start
-        visited = set()
+        # false conditions: 
+        # if went through dictionary AND starts, return false
+        # also if been through entire dictionary, want to move on to next potential start and look around
 
-        for char in word[1:]:
-            print('char', char)
-            directions = {
-            'up': [curr_row - 1, curr_col],
-            'down': [curr_row + 1, curr_col],
-            'left':[curr_row, curr_col - 1],
-            'right':[curr_row, curr_col + 1]
-            }
-            for direction in directions:
-                row, col = directions[direction]
-                if row < 0 or col < 0 or row >= row_edge or col >= col_edge:
-                    continue
-                if char == board[row][col]:
-                    given += board[row][col]
-                    curr_row, curr_col = row, col
-                    print('MATCH!')
-                    break
+        next_letter = {}
+        curr = None
+        directions = {}
 
-            print(given)
-            print(directions)
- 
+        for start in starts:
+            curr = start
+            row, col = curr
+        
+
+
+
+
+            
+
+
+
+        return
+
+
+
+
+
+
+
+
+
+
+
 #Tests
 board = [
   ['A','B','C','E'],
@@ -65,7 +68,58 @@ word1 = "ABCCED" #True
 word2 = "SEE" #True get to second s! 
 word3 = "ABCB" #False
 
-print(exist(board, word2))
+print(exist(board, word1))
+
+"""def exist(board, word):
+    given = ""
+    starts = [] #[row, col]
+    row_edge = len(board)
+    col_edge = len(board[0])
+    
+#       finding the starting idxs
+    for row_idx, row in enumerate(board):
+        if word[0] in row:
+            col_idx = row.index(word[0])
+            starts.append([row_idx, col_idx])
+            given += board[row_idx][col_idx]
+    
+    print(starts)
+    if len(given) == 0:
+        return False
+    
+    while True:
+        if given == word:
+            return True
+
+        curr_row = None
+        curr_col = None
+        for start in starts:
+            curr_row, curr_col = start
+        
+            visited = set()
+
+            for char in word[1:]:
+                print('char', char)
+                directions = {
+                'up': [curr_row - 1, curr_col],
+                'down': [curr_row + 1, curr_col],
+                'left':[curr_row, curr_col - 1],
+                'right':[curr_row, curr_col + 1]
+                }
+                for direction in directions:
+                    row, col = directions[direction]
+                    if row < 0 or col < 0 or row >= row_edge or col >= col_edge:
+                        continue
+                    if char == board[row][col]:
+                        given += board[row][col]
+                        curr_row, curr_col = row, col
+                        print('MATCH!')
+                        break
+
+                print(given)
+                print(directions)"""
+ 
+
 
 
 

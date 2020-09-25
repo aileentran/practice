@@ -24,6 +24,7 @@ good3 = [
  [0, 0, 0, 0]
 ]
 
+# backtracking for split
 split = [
  [1, 0, 1, 0],
  [0, 0, 0, 0],
