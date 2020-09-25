@@ -9,7 +9,57 @@ multiply by 2
 integer division by 3 (e.g. 10 / 3 = 3) --> // 3 for python
 Find the minimum number of steps required to generate n from 1.
 """
+# Notes
+# input: int - goal number
+# output: num - min number of steps to generate input from 1
+# keep multiplying the number until it is greater than the goal and then divide by 3
 
+# soo! have an empty counter
+# number set to 1
+# have a seen set to keep track of numbers we've visited
+
+# make infinite loop 
+# until number == goal, return the counter
+# if the number <= goal or (num // 3) NOT in seen, multiply by 2 and add in seen and INCREMENT COUNTER
+# else num // 3, increment counter
+
+def min_steps2(goal):
+	ops = 0
+	num = 1
+	seen = set()
+	seen.add(num)
+
+	while True:
+		if num == goal:
+			return ops
+
+		print('num', num)
+		if num < goal or (num // 3) in seen:
+			num *= 2
+		else:
+			num //= 3
+
+		ops += 1
+		seen.add(num)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+##########################################################
 # Notes
 # input: int - number we are trying to generate
 # output: int - min number of operations 
@@ -22,7 +72,7 @@ Find the minimum number of steps required to generate n from 1.
 # if past, we divide until <= num goal, counter += 1
 # once num_goal == input, return the counter and get out of loop
 
-def min_steps(num):
+def min_steps1(num):
 	operations = 0
 	num_goal = 1
 	seen = set()
@@ -54,5 +104,5 @@ def min_steps(num):
 num1 = 10
 num2 = 3
 
-print(min_steps(1000))
+print(min_steps2(3))
 
