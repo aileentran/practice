@@ -32,13 +32,24 @@ class Tea(object):
 	def __str__(self):
 		return str(self.name) + ' ' + str(self.region)
 
-# def teaware(teas):
+def teaware(teas, tea_is_cold):
+	"""Based on list of teas and if your tea tends to go cold, suggest teaware"""
 
+	for tea in teas:
+		if tea.get_region() == 'Japan':
+			return 'kyusu'
+
+		if tea_is_cold == True:
+			return 'tea pot or gaiwan'
+
+		if tea_is_cold == False:
+			return 'CHUG A MUG! Enjoy :)'
+		
 
 gyokuro = Tea('yame gyokuro', 'gyokuro', 'Japan')
 fukamushi = Tea('takumi fukamushi', 'sencha', 'Japan')
 baozhong = Tea('baozhong', 'oolong', 'China')
-# print(gyokuro.get_region())
-print(gyokuro.tea_temperature())
-print(fukamushi.tea_temperature())
-print(baozhong.tea_temperature())
+assam = Tea('assam', 'black', 'India')
+teas = [baozhong, assam]
+
+print(teaware(teas, False))
