@@ -22,7 +22,7 @@ def superReducedString(s):
             # print(s)
         i += 1
 
-    if len(s) == 0:
+    if len(s) == 0 or s[0] == s[1]:
         return 'Empty String'
     return s
 
@@ -31,4 +31,4 @@ s1 = 'aaabccddd' #abd
 s2 = 'aa' #Empty String
 s3 = 'baab' #Empty String; currently getting 'bb'
 
-print(superReducedString(s3))
+print(superReducedString(s1))
