@@ -8,15 +8,29 @@ Steve’s task is to delete as many characters as possible using this method and
 """
 
 def superReducedString(s):
-    
-    return s
+    stack = []
+
+    for i, char in enumerate(s):
+    	if stack and char == stack[-1]:
+    		stack.pop()
+    	else:
+    		stack.append(char)
+    if len(stack) == 0:
+    	return 'Empty String'
+    	
+    return ''.join(stack)
 
 # tests
 s1 = 'aaabccddd' #abd
 s2 = 'aa' #Empty String
 s3 = 'baab' #Empty String; currently getting 'bb'
 
-print(superReducedString(s1))
+print(superReducedString(s3))
+
+
+
+
+
 
 
 ##########################
