@@ -15,9 +15,10 @@ def superReducedString(s):
     		stack.pop()
     	else:
     		stack.append(char)
+    
     if len(stack) == 0:
     	return 'Empty String'
-    	
+
     return ''.join(stack)
 
 # tests
