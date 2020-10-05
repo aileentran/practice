@@ -25,8 +25,37 @@ Return the minimum cost to fly every person to a city such that exactly n people
 # once a city fills up, just stick the rest in the other city :o 
 
 def twoCitySchedCost(costs):
+    min_cost = 0
+    difference = [] #[cost difference, idx of person]
 
+    for person, flights in enumerate(costs):
+        flight_A, flight_B = flights
+        diff = abs(flight_A - flight_B)
+        difference.append([diff, person])
 
+    difference.sort(reverse = True)
+    
+    # space available in each city
+    city_A = len(costs) // 2 
+    city_B = len(costs) // 2
+
+    for diff in difference:
+        cost_diff, person = diff
+        cost_A, cost_B = costs[person]
+        print('costA', cost_A)
+        print('costB', cost_B)
+        if cost_A < cost_B and city_A > 0:
+            min_cost += cost_A
+            city_A -= 1
+        elif cost_A > cost_B or city_B > 0:
+            min_cost += cost_B
+            city_B -= 1
+
+        print('min_cost', min_cost)
+        print('cityA', city_A)
+        print('cityB', city_B)
+
+    return min_cost
 
 
 costs1 = [[10,20],[30,200],[400,50],[30,20]] #expected: 110
@@ -35,4 +64,4 @@ costs3 = [[515,563],[451,713],[537,709],[343,819],[855,779],[457,60],[650,359],[
 costs4 = [[259,770],[448,54],[926,667],[184,139],[840,118],[577,469]]
 # expected: 1859
 
-print(twoCitySchedCost(costs1))
+print(twoCitySchedCost(costs2))
