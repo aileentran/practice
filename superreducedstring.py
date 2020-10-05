@@ -8,6 +8,19 @@ Steve’s task is to delete as many characters as possible using this method and
 """
 
 def superReducedString(s):
+    
+    return s
+
+# tests
+s1 = 'aaabccddd' #abd
+s2 = 'aa' #Empty String
+s3 = 'baab' #Empty String; currently getting 'bb'
+
+print(superReducedString(s1))
+
+
+##########################
+def superReducedString1(s):
     i = 0
 
     while i < len(s):
@@ -25,10 +38,3 @@ def superReducedString(s):
     if len(s) == 0 or s[0] == s[1]:
         return 'Empty String'
     return s
-
-# tests
-s1 = 'aaabccddd' #abd
-s2 = 'aa' #Empty String
-s3 = 'baab' #Empty String; currently getting 'bb'
-
-print(superReducedString(s1))
