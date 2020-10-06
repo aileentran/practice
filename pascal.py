@@ -2,41 +2,41 @@
 Given a non-negative integer numRows, generate the first numRows of Pascal's triangle.
 """
 
-    def generate(self, numRows: int) -> List[List[int]]:
+def generate(self, numRows: int) -> List[List[int]]:
 #       fail if numRows == 0 or -1
 #       maybe return triangle for numRows of 1 or 2
 
-        if numRows == 0:
-            return None
-        
-        if numRows == 1:
-            return [[1]]
-        
-        if numRows == 2:
-            return [[1], [1, 1]]
-        
-        triangle = [[1], [1, 1]]
-        
-        i = 1
-        
-        while i < numRows - 1:
-            row = triangle[i]
-            next_row = [1]
-            k = 0
-            while k < len(row) - 1:
-                num1 = row[k]
-                num2 = row[k + 1]
-                next_row.append(num1 + num2)
-                
-                # print(num1)
-                # print(num2)
-                # print(next_row)
-                k += 1
-            next_row.append(1)
-            triangle.append(next_row)
-            # print(triangle)
-            i += 1
-        return triangle
+    if numRows == 0:
+        return None
+    
+    if numRows == 1:
+        return [[1]]
+    
+    if numRows == 2:
+        return [[1], [1, 1]]
+    
+    triangle = [[1], [1, 1]]
+    
+    i = 1
+    
+    while i < numRows - 1:
+        row = triangle[i]
+        next_row = [1]
+        k = 0
+        while k < len(row) - 1:
+            num1 = row[k]
+            num2 = row[k + 1]
+            next_row.append(num1 + num2)
+            
+            # print(num1)
+            # print(num2)
+            # print(next_row)
+            k += 1
+        next_row.append(1)
+        triangle.append(next_row)
+        # print(triangle)
+        i += 1
+    return triangle
 
 
 #Test
