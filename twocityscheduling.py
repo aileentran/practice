@@ -42,22 +42,22 @@ def twoCitySchedCost(costs):
     for diff in difference:
         cost_diff, person = diff
         cost_A, cost_B = costs[person]
-        print('costA', cost_A)
-        print('costB', cost_B)
-        print('cityA', city_A)
-        print('cityB', city_B)
+        # print('costA', cost_A)
+        # print('costB', cost_B)
+        # print('cityA', city_A)
+        # print('cityB', city_B)
         if (cost_A < cost_B and city_A > 0) or city_B <= 0:
-            print('A is cheaper!')
+            # print('A is cheaper! OR no more room in city B')
             min_cost += cost_A
             city_A -= 1
         else:
             min_cost += cost_B
             city_B -= 1
 
-        print('min_cost', min_cost)
-        print('cityA', city_A)
-        print('cityB', city_B)
-        print('\n')
+        # print('min_cost', min_cost)
+        # print('cityA', city_A)
+        # print('cityB', city_B)
+        # print('\n')
 
     return min_cost
 
