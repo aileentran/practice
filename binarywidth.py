@@ -57,5 +57,9 @@ Explanation:The maximum width existing in the fourth level with the length 8 (6,
 
 """
 
-def widthOfBinaryTree(self, root: TreeNode) -> int:
+
+def widthOfBinaryTree(root):
 	return
+
+
+
