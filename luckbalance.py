@@ -1,7 +1,23 @@
 """
 Hackerrank Interview Prep - Greedy Alg - Luck Balance
 """
-
+def luckBalance(k, contests):
+    max_luck_balance = 0
+    losses = k
+    contests.sort(reverse = True)
+    # print(contests)
+    for contest in contests:
+        luck, importance = contest
+        # print(contest)
+        # print('losses', losses)
+        if losses <= 0 and importance == 1:
+            max_luck_balance -= luck
+            continue
+        if importance == 1:
+            losses -= 1
+        max_luck_balance += luck
+    return max_luck_balance
+####################################################
 # Notes:
 # input: num - important contests that can be lost
 # output: num - maximum amount of luck 
@@ -53,6 +69,7 @@ def luckBalance(k, contests):
     for un in unimportant:
         luck, importance = un
         max_luck_balance += luck
+    
     return max_luck_balance
 
 # Tests
