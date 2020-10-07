@@ -32,7 +32,7 @@ def luckBalance(k, contests):
 # or just make a list of important contests and then sorting that :o
 # wonder if i can do it all in one loop.. but let's get the basic sol'n first
 # Complete the luckBalance function below.
-def luckBalance(k, contests):
+def luckBalance2(k, contests):
     max_luck_balance = 0
     important = []
     unimportant = []
