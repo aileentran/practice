@@ -29,22 +29,23 @@ def luckBalance(k, contests):
             unimportant.append(contest)
     
     important.sort(reverse = True)
-    print(k)
-    print(important)
-    wins = len(important) - k
-    print('must win', wins)
+    # print(k)
+    # print(important)
+    wins = len(important) - k 
+    # print('must win', wins)
     i = 1
-    while i <= wins:
+    while i <= wins: 
+    	#why not just len(important) - k work for some test cases?
         win = important.pop()
         luck, importance = win
         max_luck_balance -= luck
-        print('i', i)
-        print('win', win)
-        print('luck', luck)
+        # print('i', i)
+        # print('win', win)
+        # print('luck', luck)
         # print('importance', importance)
         i += 1
-    print(max_luck_balance)
-    print(important)
+    # print(max_luck_balance)
+    # print(important)
     for imp in important:
         luck, importance = imp
         max_luck_balance += luck
