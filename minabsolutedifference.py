@@ -1,6 +1,31 @@
 """
 Hackerrank - Greedy Algorithm: Minimum Absolute Difference in an Array
 """
+# sort the list and compare the neighbors. 
+# should be closer to minimum :o 
+def minimumAbsoluteDifference(arr):
+    minimum = None
+    arr.sort()
+
+    i = 0
+    while i < len(arr) - 1:
+        num1 = arr[i]
+        num2 = arr[i + 1]
+        diff = abs(num1 - num2)
+        # print('num1', num1)
+        # print('num2', num2)
+        # print('diff', diff)
+        if minimum == None:
+            minimum = diff
+        elif diff < minimum:
+            minimum = diff
+        i += 1
+        
+    return minimum
+
+
+
+
 
 # Thoughts
 # make empty minimum difference
@@ -10,7 +35,7 @@ Hackerrank - Greedy Algorithm: Minimum Absolute Difference in an Array
 # if less than minimum difference, set to min
 # outside loop, return min
 # Complete the minimumAbsoluteDifference function below.
-def minimumAbsoluteDifference(arr):
+"""def minimumAbsoluteDifference(arr):
     minimum = None
     pairs = set()
 
@@ -35,3 +60,4 @@ def minimumAbsoluteDifference(arr):
         elif diff < minimum:
             minimum = diff
     return minimum
+"""
