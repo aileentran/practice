@@ -2,15 +2,15 @@
 Hackerrank Interview Prep - Dictionaries/Hash Maps
 """
 def countTriplets(arr, r):
-    num_count = {}
-    in_a_triplet = {}
+    num_count = {} # count of num occuring in array
+    in_a_triplet = {} # count how many times num is a part of triplet.. sort of?
     counter = 0
 
     print('num_count', num_count)
     print('in_a_triplet', in_a_triplet)
     for num in reversed(arr):
         next_num = num * r
-        
+
         print('num', num)
         print('next_num', next_num)
         
@@ -18,13 +18,14 @@ def countTriplets(arr, r):
         if next_num in in_a_triplet:
             counter += in_a_triplet[next_num]
 
+        # counting potential triplets
         if next_num in num_count:
-
             if num not in in_a_triplet.keys():
                 in_a_triplet[num] = num_count[next_num]
             else:
                 in_a_triplet[num] += num_count[next_num]
 
+        # counting occurence of num in arr
         if num not in num_count.keys():
             num_count[num] = 1
         else:
