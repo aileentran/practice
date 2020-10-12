@@ -1,7 +1,94 @@
 """
 Hackerrank Interview Prep - Dictionaries/Hash Maps
 """
+# Thoughts
+# input: list of tuples (operation, data)
+# input forms stuff we do to an array
+# 1 = add data; 2 = delete 1 occurence of data
+# 3 = check if any int occurs data times - 1 if yes, 0 if no
+# output: 1 if yes, 0 if no
 
+# make the actual list 
+# if run into 3 operation, create dictionary counter - data(key): count(data)
+# Complete the freqQuery function below.
+def freqQuery(queries):
+    nums = []
+    count = {}
+    for query in queries:
+        op, data = query
+        # print('op', op)
+        # print('data', data)
+        if op == 1:
+            nums.append(data)
+            if data not in count:
+                count[data] = 1
+            else:
+                count[data] += 1
+        
+        if op == 2 and data in nums:
+            nums.remove(data)
+            if data in nums:
+                count[data] -= 1
+            else:
+                count.pop(data)
+        
+        if op == 3:
+            for idx, num in enumerate(count):
+                if count[num] == data:
+                    print(1)
+                    break
+                print('idx', idx)
+                if idx == len(count.keys()) - 1 and count[num] != data:
+                    print(0)
+
+
+        # print(nums)
+        # print(count)
+
+
+# Tests
+q1 = [
+[1, 5],
+[1, 6],
+[3, 2],
+[1, 10],
+[1, 10],
+[1, 6],
+[2, 5],
+[3, 2]
+] # 0 1
+q2 = [
+[3, 4],
+[2, 1003],
+[1, 16],
+[3, 1]
+] # 0 1
+q3 = [
+[1, 3],
+[2, 3],
+[3, 2],
+[1, 4],
+[1, 5],
+[1, 5],
+[1, 4],
+[3, 2],
+[2, 4],
+[3, 2]
+] # 0 1 1
+freqQuery(q3)
+
+
+
+
+
+
+
+
+
+
+
+
+#############################################
 # Notes
 # input: a list of tuples *data structure working with is array!
 # input (1, x) -> insert x in data structure
@@ -23,7 +110,7 @@ Hackerrank Interview Prep - Dictionaries/Hash Maps
 # if 3, look to see if in dictionary and if count matches value
 # PRINT 1 if true, 0 if false
 # Complete the freqQuery function below.
-def freqQuery(queries):
+def freqQuery1(queries):
     # nums_list = []
     nums_dict = {}
 
@@ -58,33 +145,3 @@ def freqQuery(queries):
         # print(nums_list)
         # print(nums_dict)
 
-# Tests
-q1 = [
-[1, 5],
-[1, 6],
-[3, 2],
-[1, 10],
-[1, 10],
-[1, 6],
-[2, 5],
-[3, 2]
-] # 0 1
-q2 = [
-[3, 4],
-[2, 1003],
-[1, 16],
-[3, 1]
-] # 0 1
-q3 = [
-[1, 3],
-[2, 3],
-[3, 2],
-[1, 4],
-[1, 5],
-[1, 5],
-[1, 4],
-[3, 2],
-[2, 4],
-[3, 2]
-] # 0 1 1
-freqQuery(q3)
