@@ -34,23 +34,15 @@ def freqQuery(queries):
         # print(nums)
         # print(count)
         if op == 3:
-            if len(count.keys()) == 0:
+            if data in count.values():
+                print(1)
+            else:
                 print(0)
 
-            for idx, num in enumerate(count):
-                if count[num] == data:
-                    # print(f'{num} occurs {data} times!')
-                    print(1)
-                    break
-                # print('idx', idx)
-                if idx == len(count.keys()) - 1 and count[num] != data:
-                    # print(f'nothing occurs {data} times')
-                    print(0)
-
         # print('\n')
-
         
-
+# run time: O(q) * O(n) - hidden loop ~ O(q * n) ~ O(n^2)
+# run space: O(n) + O(c) ~ O(2n)
 
 # Tests
 q1 = [
@@ -81,7 +73,7 @@ q3 = [
 [2, 4],
 [3, 2]
 ] # 0 1 1
-freqQuery(q2)
+freqQuery(q3)
 
 
 
