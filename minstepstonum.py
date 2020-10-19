@@ -8,6 +8,7 @@ Find the minimum number of steps required to generate n from 1.
 """
 # sooo.. keep multiplying by 2 until past goal num bc we've already seen // 3
 # divide by 3 until less than num
+# omg.. include 1 in visited list.. bc that's the num we start with 
 
 def min_steps(goal):
 	steps = 0
