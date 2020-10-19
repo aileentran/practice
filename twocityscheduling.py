@@ -5,6 +5,64 @@ A company is planning to interview 2n people. Given the array costs where costs[
 
 Return the minimum cost to fly every person to a city such that exactly n people arrive in each city.
 """
+# Thoughts
+# input: list of costs; cost = [cityA, cityB]; idx = person
+# output: num - minimum cost to fly everyone
+# goal: send 1/2 people to city A, 1/2 to city B w/cheapest cost
+
+# hmm.. have to keep track of how many are in each city
+# want to consider largest cost differences, plop those people in their cheapest cities until 1 fills up. then fill up the rest in the other city
+
+# have a cost difference list: [difference, person's idx]
+
+def twoCitySchedCost(self, costs: List[List[int]]) -> int:
+        minimum = 0
+        differences = []
+        
+        for idx, cost in enumerate(costs):
+            costA, costB = cost
+            diff = abs(costA - costB)
+            differences.append([diff, idx])
+            
+        differences.sort(reverse = True)
+        
+        cityA = len(costs) // 2
+        cityB = len(costs) // 2
+        for diff in differences:
+            d, idx = diff
+            costA, costB = costs[idx]
+            if (costA < costB and cityA > 0) or cityB == 0:
+                minimum += costA
+                cityA -= 1
+            else:
+                minimum += costB
+                cityB -= 1
+        return minimum
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+#################################
 # Notes:
 # input: array of costs - idx = a person; [cityA flight, cityB flight]
 # output: number - minimum cost to fly every person to a city
