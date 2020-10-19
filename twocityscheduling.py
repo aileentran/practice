@@ -15,7 +15,7 @@ Return the minimum cost to fly every person to a city such that exactly n people
 
 # have a cost difference list: [difference, person's idx]
 
-def twoCitySchedCost(self, costs: List[List[int]]) -> int:
+def twoCitySchedCost(costs):
         minimum = 0
         differences = []
         
@@ -25,7 +25,7 @@ def twoCitySchedCost(self, costs: List[List[int]]) -> int:
             differences.append([diff, idx])
             
         differences.sort(reverse = True)
-        
+
         cityA = len(costs) // 2
         cityB = len(costs) // 2
         for diff in differences:
