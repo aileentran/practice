@@ -25,28 +25,28 @@ def checkPalindromeFormation(a, b):
         a_suff = a[i:]
         b_pre = b[:i]
         b_suff = b[i:]
-        
-        print('a_pre:', a_pre, 'a_suff', a_suff)
-        print('b_pre:', b_pre, 'b_suff', b_suff)
-        
-        print(isPalindrome(a_pre, b_suff))
-        print(isPalindrome(b_pre, a_suff))
-        # pal1 = a_pre + b_suff
-        # pal2 = b_pre + a_suff
-        
-        # p = 0
-        # while p < len(pal1):
-        #     start = pal1[]
-        #     p += 1
-        
-        # if is_palindrome(a_pre, b_suff) or is_palindrome(b_pre, a_suff):
-        #     return True
+
+        if isPalindrome(a_pre, b_suff) or isPalindrome(b_pre, a_suff):
+            return True
         i += 1
+
     return False
 
 def isPalindrome(pre, suff):
-	whole = pre + suff
-	print(whole)
+    whole = pre + suff
+    # print(whole)
+
+    i = 0
+    while i < len(whole) // 2:
+        start = whole[i]
+        end = whole[-1 - i]
+        # print('start', start)
+        # print('end', end)
+        if start != end:
+            return False
+        i += 1
+
+    return True
     
 
 # Tests
@@ -65,4 +65,4 @@ b3 = "jizalu"
 a4 = "xbdef"
 b4 = "xecab"
 #False
-print(checkPalindromeFormation(a2, b2))
+print(checkPalindromeFormation(a4, b4))
