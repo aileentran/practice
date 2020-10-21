@@ -84,4 +84,6 @@ A5 = [1,3,6]
 K5 = 3
 # expected: 3
 
+A6 = [4,7,4]
+K6 = 4
 print(smallestRangeII(A4, K4))
