@@ -36,5 +36,8 @@ class Solution:
                 idx[0] = i
             elif num == target and idx[0] >= 0:
                 idx[1] = i
-                
+        
+        if idx[0] >= 0 and idx[1] == -1:
+            idx[1] = idx[0]
+            
         return idx
