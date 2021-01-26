@@ -18,15 +18,19 @@ def maxProfit(prices):
     lowest = prices.copy()
     lowest.sort()
     profit = 0
+
     for l in lowest:
         purchase_day = prices.index(l)
         sell = max(prices[purchase_day:])
-        profit = sell - l
-        return profit
+        print(l, sell, profit)
+        if sell - l > profit:
+            profit = sell - l
     return profit
 
 prices1 = [7,1,5,3,6,4] #5
 prices2 = [7,6,4,3,1] #0
+prices3 = [2,4,1] #2
 
 print(maxProfit(prices1))
 print(maxProfit(prices2))
+print(maxProfit(prices3))
