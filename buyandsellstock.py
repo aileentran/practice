@@ -15,17 +15,32 @@ search from start of lowest price to the rest of the list and find max num
 return output = max - cost
 """
 def maxProfit(prices):
-    lowest = prices.copy()
-    lowest.sort()
+    lowest = prices[0]
     profit = 0
 
-    for l in lowest:
-        purchase_day = prices.index(l)
-        sell = max(prices[purchase_day:])
-        print(l, sell, profit)
-        if sell - l > profit:
-            profit = sell - l
+    for price in prices:
+        print('price', price)
+        if price < lowest:
+            lowest = price
+            print('lowest', lowest)
+
+        if price - lowest > profit:
+            profit = price - lowest
+
     return profit
+
+
+# def maxProfit(prices):
+#     lowest = prices.copy()
+#     lowest.sort()
+#     profit = 0
+#
+#     for l in lowest:
+#         purchase_day = prices.index(l)
+#         sell = max(prices[purchase_day:])
+#         if sell - l > profit:
+#             profit = sell - l
+#     return profit
 
 prices1 = [7,1,5,3,6,4] #5
 prices2 = [7,6,4,3,1] #0
