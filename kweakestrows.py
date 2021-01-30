@@ -11,7 +11,7 @@ or an array w/ idx = row and value = keys
 """
 
 def kWeakestRows(mat, k):
-    soldiers = {}
+    soldiers = []
     for r, row in enumerate(mat):
         # print(row)
         num_soldiers = 0
@@ -21,12 +21,12 @@ def kWeakestRows(mat, k):
                 num_soldiers += col
             else:
                 break
-        soldiers[r] = num_soldiers
+        soldiers.append((r, num_soldiers))
 
-    sorted_soldiers = sorted(soldiers.items(), key = lambda soldier: soldier[1])
+    soldiers.sort(key = lambda soldier: soldier[1])
 
     weakest = []
-    for soldier in sorted_soldiers:
+    for soldier in soldiers:
         row, num = soldier
         weakest.append(row)
 
