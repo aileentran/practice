@@ -8,7 +8,8 @@ notes: set row and cols w/0 to 0
 """
 def setZeroes(matrix):
     # make a note of where the 0 is
-    zeroes = [] #idx of where the zero is in matrix!
+    # so that we don't zero out based on the zeroes we add
+    zeroes = [] #idx (r, c) of where the zero is in matrix!
     for r, row in enumerate(matrix):
         for c, col in enumerate(row):
             if col == 0:
