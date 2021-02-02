@@ -15,10 +15,10 @@ Approach: using depth-first-search whenever encountering land
 marking seen in the grid
 either make copy of grid or adjust directly to save space
 """
+import copy
 
 def numIslands(grid):
     islands = 0
-
     for r, row in enumerate(grid):
         for c, col in enumerate(row):
             if col == "1":
@@ -28,7 +28,7 @@ def numIslands(grid):
     return islands
 
 def dfs(grid, r, c):
-    if r < 0 or c < 0  or r > len(grid) or c > len(grid[0]) or grid[r][c] != "1":
+    if r < 0 or c < 0  or r >= len(grid) or c >= len(grid[0]) or grid[r][c] != "1":
         return
     grid[r][c] = "!"
     dfs(grid, r + 1, c) #up
@@ -50,4 +50,4 @@ grid2 = [
 ] #3
 
 print(numIslands(grid1))
-# print(numIslands(grid2))
+print(numIslands(grid2))
