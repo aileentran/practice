@@ -20,21 +20,21 @@ def numIslands(grid):
             adj = []
             if col == "1":
                 seen_lands.append((r, c))
-                adj.append((r - 1, c))
-                adj.append((r, c - 1))
-                adj.append((r, c + 1))
-                adj.append((r + 1, c))
+                adj.append((r - 1, c)) #up
+                adj.append((r, c - 1)) #left
+                adj.append((r, c + 1)) #right
+                adj.append((r + 1, c)) #down
                 adj_lands = adjacentLands(adj, grid)
                 new_lands = seenLands(seen_lands, adj_lands, grid)
                 # i need to go through new lands and see if there is land around
                 # and.. need to keep looping through newlands until there ARENT any
                 # then we have an island
-                # almost feels like recursion but.. 
+                # almost feels like recursion but..
                 # if there is land, add to new_lands
                 # if new_lands is 0 == island so we increment island
                 print('curr_land', (r, c))
                 print('seen', seen_lands)
-                print(new_lands)
+                print('new_lands', new_lands)
                 if len(new_lands) == 0:
                     islands += 1
 
