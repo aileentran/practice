@@ -9,17 +9,24 @@ surrounded = o's and adj o's NOT at border are flipped
 """
 
 def solve(board):
+    # checking for O's connected to border
     for r, row in enumerate(board):
         for c, col in enumerate(row):
             # O's along border.. mark w/ '!'
             if col == 'O' and (r == 0 or r == len(board) - 1 or c == 0 or c == len(row) - 1):
-                board[r][c] = '!'
-                print('an edge O!', board)
-            # O's NOT along the boarder
-            elif col == 'O':
+                border_dfs(board, r, c)
+
+    # check for surrounded O's
+    for r, row in enumerate(board):
+        for c, col in enumerate(row):
+            if col == 'O':
                 surrounded_dfs(board, r, c)
-            # consider O's along the border
-    # check for '!' and convert to O's
+
+    # TODO: check for '!' and convert to O's
+    for r, row in enumerate(board):
+        for c, col in enumerate(row):
+            if col == '!':
+                board[r][c] = 'O'
     return board
 
 def surrounded_dfs(board, r, c):
@@ -31,6 +38,15 @@ def surrounded_dfs(board, r, c):
     surrounded_dfs(board, r + 1, c)
     surrounded_dfs(board, r, c - 1)
     surrounded_dfs(board, r, c + 1)
+
+def border_dfs(board, r, c):
+    if r < 0 or c < 0 or r >= len(board) or c >= len(board[0]) or board[r][c] != 'O':
+        return
+    board[r][c] = '!'
+    border_dfs(board, r - 1, c)
+    border_dfs(board, r + 1, c)
+    border_dfs(board, r, c - 1)
+    border_dfs(board, r, c + 1)
 
 board1 = [
 ['X', 'X', 'X', 'X'],
@@ -61,4 +77,5 @@ X O O X
 X O O X
 X O X X
 """
+print(solve(board1))
 print(solve(board2))
