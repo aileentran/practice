@@ -15,10 +15,9 @@ Approach: using depth-first-search whenever encountering land
 marking seen in the grid
 either make copy of grid or adjust directly to save space
 """
-import copy
-
 def numIslands(grid):
     islands = 0
+
     for r, row in enumerate(grid):
         for c, col in enumerate(row):
             if col == "1":
