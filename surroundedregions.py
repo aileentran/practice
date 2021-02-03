@@ -12,7 +12,7 @@ def solve(board):
     # checking for O's connected to border
     for r, row in enumerate(board):
         for c, col in enumerate(row):
-            # O's along border.. mark w/ '!'
+            # O's along border, mark w/ '!'
             if col == 'O' and (r == 0 or r == len(board) - 1 or c == 0 or c == len(row) - 1):
                 border_dfs(board, r, c)
 
@@ -22,7 +22,7 @@ def solve(board):
             if col == 'O':
                 surrounded_dfs(board, r, c)
 
-    # TODO: check for '!' and convert to O's
+    # check for '!' and convert to O's
     for r, row in enumerate(board):
         for c, col in enumerate(row):
             if col == '!':
@@ -30,7 +30,7 @@ def solve(board):
     return board
 
 def surrounded_dfs(board, r, c):
-    #consider borders here in base case?
+    #consider borders here in base case
     if r < 1 or c < 1 or r >= len(board) - 1 or c >= len(board[0]) - 1 or board[r][c] != 'O':
         return
     board[r][c] = 'X'
