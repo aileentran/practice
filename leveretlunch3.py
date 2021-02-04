@@ -29,11 +29,19 @@ def lunch_count(garden):
 
     nrows = len(garden)
     ncols = len(garden[0])
+    carrots = 0
 
-    start = center(garden, nrows, ncols)
-    print(start)
+    start_row, start_col = center(garden, nrows, ncols)
+
+    dfs(garden, start_row, start_col)
+
+def dfs(garden, row, col):
+    if row < 0 or col < 0 or row >= len(garden) or col >= len(garden[0]) or garden[row][col] == 0:
+        return
 
 
+
+# def most_carrots(garden, )
 
 def center(garden, nrows, ncols):
     center_squares = []
