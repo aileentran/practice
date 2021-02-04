@@ -30,6 +30,46 @@ def lunch_count(garden):
     nrows = len(garden)
     ncols = len(garden[0])
 
+    start = center(garden, nrows, ncols)
+    print(start)
+
+
+
+def center(garden, nrows, ncols):
+    center_squares = []
+    row_idxs = []
+    col_idxs = []
+    start = None
+    carrots = 0
+
+    row_idxs.append(nrows // 2)
+    col_idxs.append(ncols // 2)
+
+    if nrows % 2 == 0:
+        row_idxs.append(nrows // 2 - 1)
+
+    if ncols % 2 == 0:
+        col_idxs.append(ncols // 2 - 1)
+
+    for row in row_idxs:
+        for col in col_idxs:
+            center_squares.append((row, col))
+
+    if len(center_squares) == 1:
+        return center_squares[0]
+
+    for square in center_squares:
+        row, col = square
+        if garden[row][col] > carrots:
+            start = (row, col)
+            carrots = garden[row][col]
+
+    return start
+
+
+
+
+
 garden1 = [
     [1, 1, 1],
     [0, 1, 1],
