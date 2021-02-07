@@ -29,26 +29,51 @@ def lunch_count(garden):
 
     nrows = len(garden)
     ncols = len(garden[0])
+
+    current = center(garden, nrows, ncols)
+    current_row, current_col = current
+    carrots = garden[current_row][current_col]
+    garden[current_row][current_col] = 0
+
+    while True:
+        adj = adj_squares(garden, current)
+        next = most_carrots(garden, adj)
+        next_row, next_col = next
+        
+        if garden[next_row][next_col] == 0:
+            return carrots
+
+        current = next
+        current_row, current_col = current
+        carrots += garden[current_row][current_col]
+        garden[current_row][current_col] = 0
+
+def most_carrots(garden, squares):
+    next = squares[0]
     carrots = 0
 
-    start_row, start_col = center(garden, nrows, ncols)
+    for square in squares:
+        row, col = square
+        if garden[row][col] > carrots:
+            next = square
+            carrots = garden[row][col]
+    return next
 
-    dfs(garden, start_row, start_col)
+def adj_squares(garden, current):
+    row, col = current
+    adj = [(row, col - 1), (row - 1, col), (row, col + 1), (row + 1, col)]
+    valid = []
+    for a in adj:
+        adj_row, adj_col = a
+        if adj_row >= 0 and adj_col >= 0 and adj_row < len(garden) and adj_col < len(garden[0]):
+            valid.append(a)
+    return valid
 
-def dfs(garden, row, col):
-    if row < 0 or col < 0 or row >= len(garden) or col >= len(garden[0]) or garden[row][col] == 0:
-        return
-
-
-
-# def most_carrots(garden, )
 
 def center(garden, nrows, ncols):
     center_squares = []
     row_idxs = []
     col_idxs = []
-    start = None
-    carrots = 0
 
     row_idxs.append(nrows // 2)
     col_idxs.append(ncols // 2)
@@ -66,11 +91,7 @@ def center(garden, nrows, ncols):
     if len(center_squares) == 1:
         return center_squares[0]
 
-    for square in center_squares:
-        row, col = square
-        if garden[row][col] > carrots:
-            start = (row, col)
-            carrots = garden[row][col]
+    start = most_carrots(garden, center_squares)
 
     return start
 
