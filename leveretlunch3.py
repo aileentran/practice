@@ -26,7 +26,6 @@ def lunch_count(garden):
         "Garden values must be ints!"
 
     # Get number of rows and columns
-
     nrows = len(garden)
     ncols = len(garden[0])
 
@@ -39,7 +38,7 @@ def lunch_count(garden):
         adj = adj_squares(garden, current)
         next = most_carrots(garden, adj)
         next_row, next_col = next
-        
+
         if garden[next_row][next_col] == 0:
             return carrots
 
@@ -57,16 +56,19 @@ def most_carrots(garden, squares):
         if garden[row][col] > carrots:
             next = square
             carrots = garden[row][col]
+
     return next
 
 def adj_squares(garden, current):
     row, col = current
     adj = [(row, col - 1), (row - 1, col), (row, col + 1), (row + 1, col)]
     valid = []
+
     for a in adj:
         adj_row, adj_col = a
         if adj_row >= 0 and adj_col >= 0 and adj_row < len(garden) and adj_col < len(garden[0]):
             valid.append(a)
+
     return valid
 
 
