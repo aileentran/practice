@@ -12,7 +12,22 @@ mark the squares that we see w/ marker like "!"
 """
 
 def numIslands(grid):
-    return
+    islands = 0
+    for r, row in enumerate(grid):
+        for c, col in enumerate(row):
+            if col == '1':
+                dfs(grid, r, c)
+                islands += 1
+    return islands
+
+def dfs(grid, r, c):
+    if r < 0 or c < 0 or r >= len(grid) or c >= len(grid[0]) or grid[r][c] != '1':
+        return
+    grid[r][c] = "!"
+    dfs(grid, r - 1, c) #up
+    dfs(grid, r + 1, c) #down
+    dfs(grid, r, c - 1) #left
+    dfs(grid, r, c + 1) #right
 
 
 grid1 = [
