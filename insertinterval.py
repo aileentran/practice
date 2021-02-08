@@ -8,9 +8,9 @@ def insert(intervals, newInterval):
     if len(intervals) == 0:
         intervals.append(newInterval)
         return intervals
+
     new_intervals = []
     new_start, new_end = newInterval
-    
     # adding newInterval in list
     for interval in intervals:
         start, end = interval
@@ -20,12 +20,14 @@ def insert(intervals, newInterval):
             new_intervals.append([new_start, end])
         else:
             new_intervals.append(interval)
+            new_intervals.append(newInterval)
     # checking all current intervals and keep collapsing them
+    new_intervals.sort(key=lambda interval: interval[0])
     result = collapse(new_intervals)
     return result
 
 def collapse(new_intervals):
-    for i in range(len(new_intervals) - 2):
+    for i in range(len(new_intervals) - 1):
         start1, end1 = new_intervals[i]
 
         for k in range(i + 1, len(new_intervals)):
@@ -48,6 +50,10 @@ def collapse(new_intervals):
                 new_intervals.pop(k)
                 collapse(new_intervals)
 
+            elif start1 in range(start2, end2 + 1) and end1 in range(start2, end2 + 1):
+                new_intervals.pop(i)
+                collapse(new_intervals)
+
 
     return new_intervals
 
@@ -68,8 +74,16 @@ newInterval4 = [2,3] #[[1,5]]
 intervals5 = [[1,5]]
 newInterval5 = [2,7] #[[1,7]]
 
+intervals6 = [[1,5]]
+newInterval6 = [6,8] #[[1,5],[6,8]]
+
+intervals7 = [[1,5],[6,8]]
+newInterval7 = [0,9] # [[0, 9]]
+
 print(insert(intervals1, newInterval1))
 print(insert(intervals2, newInterval2))
 print(insert(intervals3, newInterval3))
-# print(insert(intervals4, newInterval4))
-# print(insert(intervals5, newInterval5))
+print(insert(intervals4, newInterval4))
+print(insert(intervals5, newInterval5))
+print(insert(intervals6, newInterval6))
+print(insert(intervals7, newInterval7))
