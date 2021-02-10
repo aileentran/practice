@@ -11,11 +11,14 @@ class Trie(object):
     def insert(self, word):
         curr = self.head
         for char in word:
+            print(char)
             if char not in curr:
                 curr[char] = {}
-            curr = curr[char]
-        curr['*'] = True
-        return curr
+                print('curr inside if', curr)
+            # move curr inside first value of dictionary
+            curr = curr[char] #curr = {}, empty dictionary
+        curr['*'] = True #marking end of word
+        return self.head
 
     def search(self, word):
         """Returns True if the word is in trie."""
