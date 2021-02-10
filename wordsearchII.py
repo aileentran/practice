@@ -52,7 +52,6 @@ def findWords(board, words):
     trie = Trie()
 
     for word in words:
-        # print(word)
         trie.add(word)
 
     head = trie.head
@@ -60,11 +59,14 @@ def findWords(board, words):
     for r, row in enumerate(board):
         for c, col in enumerate(row):
             if col in head:
-                dfs(board, r, c, trie)
+                dfs(board, r, c, head)
     return
 
-def dfs(board, r, c, trie):
-    return
+def dfs(board, r, c, head):
+    if r < 0 or c < 0 or r >= len(board) or c >= len(board[0]):
+        return
+    
+
 
 board1 = [["o","a","a","n"],["e","t","a","e"],["i","h","k","r"],["i","f","l","v"]]
 words1 = ["oath","pea","eat","rain"]
