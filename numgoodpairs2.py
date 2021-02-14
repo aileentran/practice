@@ -19,7 +19,7 @@ def numIdenticalPairs(nums):
     numbers = {}
     pairs = 0
     for num in nums:
-        if num not in numbers.keys():
+        if num not in numbers:
             numbers[num] = 1
         else:
             pairs += numbers[num]
