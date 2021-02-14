@@ -15,7 +15,22 @@ return result
 left i - 1, right i + 1
 """
 def productExceptSelf(nums):
-    return
+    products = []
+    left = [0] * len(nums)
+    right = [0] * len(nums)
+
+    left[0] = 1
+    for i in range(1, len(left)):
+        left[i] = left[i - 1] * nums[i - 1]
+
+    right[len(right) - 1] = 1
+    for i in reversed(range(len(right) - 1)):
+        right[i] = right[i + 1] * nums[i + 1]
+
+    for i in range(len(nums)):
+        products.append(left[i] * right[i])
+
+    return products
 
 nums = [1,2,3,4] #[24,12,8,6]
 
