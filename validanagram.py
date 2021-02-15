@@ -10,7 +10,12 @@ see if they are equal - true if equal, false if not
 """
 
 def isAnagram(s, t):
-    return
+    s = ''.join(sorted(s))
+    t = ''.join(sorted(t))
+
+    if s == t:
+        return True
+    return False
 
 s1 = "anagram"
 t1 = "nagaram"
