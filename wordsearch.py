@@ -22,35 +22,37 @@ if reach end of the board, return false
 
 def exist(board, word):
     for r, row in enumerate(board):
-        print('row', row)
         for c, col in enumerate(row):
-            if col == word[0]:
-                print('first letter', col)
-                return dfs(word, board, r, c)
-                # TODO: be able to return true after reaching the end of the word
-                # TODO: if word isn't in board, continue looping through clean board for next letter 
-
+            print('row, col', row, col)
+            print('board before dfs', board)
+            if dfs(word, board, r, c, 0):
+                return True
     return False
 
-def dfs(word, board, r, c):
-    print(board)
+def dfs(word, board, r, c, i):
+    if i == len(word):
+        return True
+
     if r < 0 or c < 0 or r >= len(board) or c >= len(board[0]):
         return
 
-    if board[r][c] not in word:
+    if board[r][c] != word[i]:
         return False
 
-    for letter in word:
-        if board[r][c] == letter:
-            board[r][c] = '!'
-            dfs(word, board, r - 1, c)
-            dfs(word, board, r + 1, c)
-            dfs(word, board, r, c - 1)
-            dfs(word, board, r, c + 1)
+    print('current board letter', board[r][c])
+    print('letter in word', word[i])
 
-    # returning True no matter what.. hmmm...
-    # TODO: return true once reach end of the word and it is in the board
-    return True
+    board[r][c] = '!'
+
+    print('board after', board)
+    print('\n')
+
+    result = dfs(word, board, r - 1, c, i + 1) \
+    or dfs(word, board, r + 1, c, i + 1) \
+    or dfs(word, board, r, c - 1, i + 1) \
+    or dfs(word, board, r, c + 1, i + 1)
+
+    return result
 
 board1 = [["A","B","C","E"],["S","F","C","S"],["A","D","E","E"]]
 word1 = "ABCCED"
@@ -63,6 +65,11 @@ word2 = "SEE"
 board3 = [["A","B","C","E"],["S","F","C","S"],["A","D","E","E"]]
 word3 = "ABCB"
 
-print(exist(board1, word1))
+board4 = [["C","A","A"],["A","A","A"],["B","C","D"]]
+word4 = "AAB"
+# True
+
+# print(exist(board1, word1))
 # print(exist(board2, word2))
 # print(exist(board3, word3))
+print(exist(board4, word4))
