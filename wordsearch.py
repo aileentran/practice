@@ -27,6 +27,8 @@ def exist(board, word):
             if col == word[0]:
                 print('first letter', col)
                 return dfs(word, board, r, c)
+                # TODO: be able to return true after reaching the end of the word
+                # TODO: if word isn't in board, continue looping through clean board for next letter 
 
     return False
 
@@ -46,6 +48,8 @@ def dfs(word, board, r, c):
             dfs(word, board, r, c - 1)
             dfs(word, board, r, c + 1)
 
+    # returning True no matter what.. hmmm...
+    # TODO: return true once reach end of the word and it is in the board
     return True
 
 board1 = [["A","B","C","E"],["S","F","C","S"],["A","D","E","E"]]
@@ -59,6 +63,6 @@ word2 = "SEE"
 board3 = [["A","B","C","E"],["S","F","C","S"],["A","D","E","E"]]
 word3 = "ABCB"
 
-# print(exist(board1, word1))
+print(exist(board1, word1))
 # print(exist(board2, word2))
-print(exist(board3, word3))
+# print(exist(board3, word3))
