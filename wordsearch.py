@@ -21,7 +21,32 @@ if reach end of the board, return false
 """
 
 def exist(board, word):
-    return
+    for r, row in enumerate(board):
+        print('row', row)
+        for c, col in enumerate(row):
+            if col == word[0]:
+                print('first letter', col)
+                return dfs(word, board, r, c)
+
+    return False
+
+def dfs(word, board, r, c):
+    print(board)
+    if r < 0 or c < 0 or r >= len(board) or c >= len(board[0]):
+        return
+
+    if board[r][c] not in word:
+        return False
+
+    for letter in word:
+        if board[r][c] == letter:
+            board[r][c] = '!'
+            dfs(word, board, r - 1, c)
+            dfs(word, board, r + 1, c)
+            dfs(word, board, r, c - 1)
+            dfs(word, board, r, c + 1)
+
+    return True
 
 board1 = [["A","B","C","E"],["S","F","C","S"],["A","D","E","E"]]
 word1 = "ABCCED"
@@ -33,3 +58,7 @@ word2 = "SEE"
 
 board3 = [["A","B","C","E"],["S","F","C","S"],["A","D","E","E"]]
 word3 = "ABCB"
+
+# print(exist(board1, word1))
+# print(exist(board2, word2))
+print(exist(board3, word3))
