@@ -24,7 +24,7 @@ def exist(board, word):
     for r, row in enumerate(board):
         for c, col in enumerate(row):
             print('row, col', row, col)
-            print('board before dfs', board)
+            print('original board', board)
             if dfs(word, board, r, c, 0):
                 return True
     return False
@@ -39,20 +39,24 @@ def dfs(word, board, r, c, i):
     if board[r][c] != word[i]:
         return False
 
+    print('idx', i)
     print('current board letter', board[r][c])
     print('letter in word', word[i])
-
+    #tmp allows us to use one board without needing to make a copy!
+    original_value = board[r][c] #currently saving original board[r][c] value
     board[r][c] = '!'
 
     print('board after', board)
     print('\n')
 
-    result = dfs(word, board, r - 1, c, i + 1) \
+    result = dfs(word, board, r, c + 1, i + 1) \
     or dfs(word, board, r + 1, c, i + 1) \
     or dfs(word, board, r, c - 1, i + 1) \
-    or dfs(word, board, r, c + 1, i + 1)
-
+    or dfs(word, board, r - 1, c, i + 1)
+    board[r][c] = original_value #returning board[r][c] to original value
     return result
+
+
 
 board1 = [["A","B","C","E"],["S","F","C","S"],["A","D","E","E"]]
 word1 = "ABCCED"
@@ -69,7 +73,15 @@ board4 = [["C","A","A"],["A","A","A"],["B","C","D"]]
 word4 = "AAB"
 # True
 
+board5 = [["A","B","C","E"],["S","F","E","S"],["A","D","E","E"]]
+word5 = "ABCESEEEFS"
+
+board6 = [["A","B","C","E"],["S","F","E","S"],["A","D","E","E"]]
+word6 = "ABCEFSADEESE"
+
 # print(exist(board1, word1))
 # print(exist(board2, word2))
 # print(exist(board3, word3))
-print(exist(board4, word4))
+# print(exist(board4, word4))
+# print(exist(board5, word5))
+print(exist(board6, word6))
