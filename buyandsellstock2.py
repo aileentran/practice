@@ -7,25 +7,36 @@ output: num - greatest amount of profit
 Notes:
 can only sell after you buy stock
 
-Thoughts
+Brute force solution:
 empty profit variable
-
 loop through the numbers
 slice and look at the days following to get maximum number
 if curr num - max num > profit
 then set the profit variable to the new difference
-
 outside of the loop, return profit
+
+Two pointer solution:
+have empty profit variable
+initialize left (buy) to 0 and right(sell) to i
+loop through idxs
+if right price is < left price
+scoot the left pointer and right pointer over
+else subtract right price from left price
+if > profit, then set profit = right - left prices
+outside loop, return profit
 """
 def maxProfit(prices):
     profit = 0
+    left, right = 0, 1 #left = buy. right = sell.
 
-    for p in range(len(prices) - 1):
-        buy = prices[p]
-        max_sell = max(prices[p + 1:])
-
-        if max_sell > buy and (max_sell - buy) > profit:
-            profit = max_sell - buy
+    while right < len(prices):
+        if prices[right] < prices[left]:
+            left = right
+            right = left + 1
+            continue
+        if prices[right] - prices[left] > profit:
+            profit = prices[right] - prices[left]
+        right += 1
 
     return profit
 
