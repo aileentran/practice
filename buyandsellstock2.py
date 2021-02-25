@@ -24,19 +24,26 @@ scoot the left pointer and right pointer over
 else subtract right price from left price
 if > profit, then set profit = right - left prices
 outside loop, return profit
+
+Leetcode solution
+empty profit variable
+set minimum number to infinity
+
+loop through list
+if the price is < minimum, minimum = price
+else price - minimum > profit, profit = that difference
+
+return profit
 """
 def maxProfit(prices):
     profit = 0
-    left, right = 0, 1 #left = buy. right = sell.
+    minimum = float('inf')
 
-    while right < len(prices):
-        if prices[right] < prices[left]:
-            left = right
-            right = left + 1
-            continue
-        if prices[right] - prices[left] > profit:
-            profit = prices[right] - prices[left]
-        right += 1
+    for price in prices:
+        if price < minimum:
+            minimum = price
+        elif price - minimum > profit:
+            profit = price - minimum
 
     return profit
 
