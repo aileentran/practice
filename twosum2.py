@@ -11,14 +11,17 @@ return in any order
 """
 
 def twoSum(nums, target):
-    idxs = []
+    # creating dictionary to keep track of nums and their idxs
+    nums_i = {}
+    result = []
 
-    for i in range(len(nums) - 1):
-        num1 = nums[i]
-        for j in range(i + 1, len(nums)):
-            num2 = nums[j]
-            if num1 + num2 == target:
-                return [i, j]
+    for i, num in enumerate(nums):
+        num2 = target - num
+        if num2 in nums_i:
+            return [nums_i[num2], i]
+        # vals can just be an int
+        # bc line 20 will find duplicate complements early
+        nums_i[num] = i
 
 nums1 = [2,7,11,15]
 target1 = 9
