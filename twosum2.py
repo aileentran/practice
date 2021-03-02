@@ -20,7 +20,7 @@ def twoSum(nums, target):
         if num2 in nums_i:
             return [nums_i[num2], i]
         # vals can just be an int
-        # bc line 20 will find duplicate complements early
+        # bc line 20 will find complements == to current num early
         nums_i[num] = i
 
 nums1 = [2,7,11,15]
