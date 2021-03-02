@@ -11,7 +11,14 @@ return in any order
 """
 
 def twoSum(nums, target):
-    return
+    idxs = []
+
+    for i in range(len(nums) - 1):
+        num1 = nums[i]
+        for j in range(i + 1, len(nums)):
+            num2 = nums[j]
+            if num1 + num2 == target:
+                return [i, j]
 
 nums1 = [2,7,11,15]
 target1 = 9
@@ -24,3 +31,7 @@ target2 = 6
 nums3 = [3,3]
 target3 = 6
 # [0,1]
+
+print(twoSum(nums1, target1))
+print(twoSum(nums2, target2))
+print(twoSum(nums3, target3))
