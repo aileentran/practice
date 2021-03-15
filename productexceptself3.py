@@ -4,30 +4,23 @@ Leetcode - 238. Product of Array Except Self
 input: list of nums
 output: list of nums - product of all other eles except @ that index
 
-Thoughts - solving two arrays
-create array for product of items "left" of current value
-create array for product items "right" of current value - reverse direction
-
-product of items = prev in "left/right" * curr's prev
-left array starts w/1. right array ends with 1
-
-loop through both arrays and multiply left * right
+Thoughts - solving w/ 1 result array = O(1) time
+make an empty result array
+set right variable to keep track of products
+loop using forward range
+append left * right into results
 """
 
 def productExceptSelf(nums):
-    left = [1] * len(nums)
+    res = [1] * len(nums)
     for i in range(1, len(nums)):
-        left[i] = left[i - 1] * nums[i - 1]
-    # print(left)
+        res[i] = res[i - 1] * nums[i - 1]
 
-    right = [1] * len(nums)
-    for i in reversed(range(len(nums) - 1)):
-        right[i] = right[i + 1] * nums[i + 1]
-    # print(right)
 
-    res = []
-    for i in range(len(nums)):
-        res.append(left[i] * right[i])
+    right = 1
+    for i in reversed(range(len(nums))):
+        res[i] = res[i] * right
+        right *= nums[i]
 
     return res
 
