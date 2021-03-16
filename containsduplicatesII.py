@@ -5,7 +5,12 @@ input: list of nums, k (int)
 output: boolean - True if duplicates and abs difference of indices < k
 """
 def containsNearbyDuplicate(nums, k):
-    return
+    nums_i = {}
+    for i, num in enumerate(nums):
+        if num in nums_i and abs(i - nums_i[num]) <= k:
+            return True
+        nums_i[num] = i
+    return False
 
 nums1 = [1,2,3,1]
 k1 = 3
