@@ -11,26 +11,24 @@ key - num, val - the latest index
 
 loop through nums using range
 nested loop to check value in dictionary
-if the value is within num +- t and both idxs are within k range, return true 
+if the value is within num +- t and both idxs are within k range, return true
 
 outside loop return false
 """
 
 def containsNearbyAlmostDuplicate(nums, k, t):
     print(nums)
-    print('k index', k)
-    print('t value', t)
-    dict = {}
+    print('k', k)
+    print('t', t)
     for i, num in enumerate(nums):
-        print('i', i)
-        print('num', num)
-        print(dict)
-        for val in dict:
-            if num - t <= val <= num + t and abs(dict[val] - i) <= k:
+        for j in range(max(0, i - k + 1), i):
+            print(i, 'nums[i]', nums[i])
+            print(j, 'nums[j]', nums[j])
+            if abs(nums[i] - nums[j]) <= t:
                 return True
-        dict[num] = i
-        # print(dict)
-        print('\n')
+        for j in range(i + 1, min(i + k + 1, len(nums))):
+            if abs(nums[i] - nums[j]) <= t:
+                return True
     return False
 
 nums1 = [1,2,3,1]
@@ -53,5 +51,5 @@ t4 = 3
 
 # print(containsNearbyAlmostDuplicate(nums1, k1, t1))
 # print(containsNearbyAlmostDuplicate(nums2, k2, t2))
-print(containsNearbyAlmostDuplicate(nums3, k3, t3))
+# print(containsNearbyAlmostDuplicate(nums3, k3, t3))
 # print(containsNearbyAlmostDuplicate(nums4, k4, t4))
