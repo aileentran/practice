@@ -14,9 +14,14 @@ class Stairs(object):
     def __init__(self):
         self.memo = {}
     def climbStairs(self, n: int) -> int:
+        if n < 0:
+            return
+
         if n <= 1:
-            self.memo[n] = 1
             return 1
+
+        # don't need to add 0 and 1 in memo bc already returning 1
+        # self.memo[0] = self.memo[1] = 1
 
         # already calculated this and is in memo
         if n in self.memo:
