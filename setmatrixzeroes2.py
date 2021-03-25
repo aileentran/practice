@@ -22,15 +22,17 @@ def setZeroes(matrix):
         for c, col in enumerate(row):
             if col == 0:
                 zeroes.append((r, c))
-    # print(zeroes)
 
     for zero in zeroes:
         r, c = zero
-        matrix[r] = [0] * len(matrix[r])
-        for i in range(len(matrix)):
-            matrix[i][c] = 0
-    # print(matrix)
+        matrix[r] = [0] * len(matrix[r]) #set entire row to 0
+        for i in range(len(matrix)): # i == row indices in matrix
+            matrix[i][c] = 0 #set columns to 0
+    
     return matrix
+
+# runtime: O(n^2)
+# space complexity: O(n)? bc of zeroes list?
 
 matrix1 = [
 [1,1,1],

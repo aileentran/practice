@@ -12,11 +12,11 @@ create a dictionary to keep track of ways we've gotten there (calulations)
 """
 class Stairs(object):
     def __init__(self):
-        self.memo = {}
+        self.memo = {} #key - step, value = result for this step
     def climbStairs(self, n: int) -> int:
         if n < 0:
             return
-
+        # base case
         if n <= 1:
             return 1
 
