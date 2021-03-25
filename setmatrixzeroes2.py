@@ -5,10 +5,32 @@ input: matrix of nums
 output: matrix of nums where rows and cols where 0 is at are all 0
 
 note: do not make a new data structure
+
+Thoughts
+create list of zero tuples
+loop through matrix and note where the zeros are
+
+loop through the list of zeroes
+unpack where the zeroes already
+0 out the row
+loop through the col in the row where the zero is and zero those out
 """
 
 def setZeroes(matrix):
-    return
+    zeroes = []
+    for r, row in enumerate(matrix):
+        for c, col in enumerate(row):
+            if col == 0:
+                zeroes.append((r, c))
+    # print(zeroes)
+
+    for zero in zeroes:
+        r, c = zero
+        matrix[r] = [0] * len(matrix[r])
+        for i in range(len(matrix)):
+            matrix[i][c] = 0
+    # print(matrix)
+    return matrix
 
 matrix1 = [
 [1,1,1],
