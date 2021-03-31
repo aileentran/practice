@@ -12,7 +12,9 @@ return num (first int of list) + func(rest of list)
 """
 
 def sum(nums):
-    return
+    if nums == []:
+        return 0
+    return nums[0] + sum(nums[1:])
 
 nums1 = [2, 4, 6] #12
 nums2 = [] #0
