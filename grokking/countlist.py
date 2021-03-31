@@ -12,7 +12,9 @@ return 1 + func(list[1:])
 """
 
 def count(list):
-    return
+    if list == []:
+        return 0
+    return 1 + count(list[1:])
 
 list1 = ['a', 1, 'C'] #3
 list2 = [] #0
