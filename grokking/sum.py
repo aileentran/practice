@@ -1,7 +1,7 @@
 """
 Grokking ch. 4
 
-Write recursive solution for summing nums
+4.1 Write recursive solution for summing nums
 input: list of nums
 output: num - sum of all nums in list
 
