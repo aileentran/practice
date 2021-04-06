@@ -17,37 +17,35 @@ k - nums in dictionary.
 if in list, increment counter and remove both idxs from dictionary
 
 outside loop, return counter
+
+New Approach
+using a dictionary as a counter instead
+num (key), value = counter for amt in list that we've seen
+
+ops = 0
+loop through nums list
+get the diff = k - nums
+if diff in dict and counter > 0, ops += 1, counter -= 1
+otherwise just add current num to dictionary += 1
+
+return ops counter
 """
 
 def maxOperations(nums, k):
-    dict = {}
     ops = 0
-
-    for i, num in enumerate(nums):
-        if dict.get(num):
-            dict[num].append(i)
-        else:
-            dict[num] = [i]
-    print(dict)
-
-    for i, num in enumerate(nums):
-        pair = k - num
-        print('num', num)
-        print('pair', pair)
-        if pair == num and len(dict[pair]) < 2:
-            continue
-        if dict.get(pair):
+    seen = {}
+    for num in nums:
+        diff = k - num
+        if seen.get(diff) and seen[diff] > 0:
             ops += 1
-            dict[num].remove(i)
-            dict[pair].pop()
-            if dict.get(num) and len(dict[num]) < 1:
-                dict.pop(num)
-            if dict.get(pair) and len(dict[pair]) < 1:
-                dict.pop(pair)
-        print('dict', dict)
-        print(ops)
-
+            seen[diff] -= 1
+        else:
+            if seen.get(num):
+                seen[num] += 1
+            else:
+                seen[num] = 1
     return ops
+
 
 nums1 = [1,2,3,4]
 k1 = 5
